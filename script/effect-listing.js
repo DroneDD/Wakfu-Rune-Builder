@@ -120,7 +120,7 @@ function GetItemTypeImage(itemType){
 }
 
 function GetBoostImages(effect) {
-    if (effect)
+    //if (effect)
 }
 
 function GetEffectValue(effect, runeLevel, boosted){

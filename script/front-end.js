@@ -150,3 +150,7 @@ function LoadItemEffects(type, itemType) {
 
     $('#available-effects').html(html);
 }
+
+function BuildBoostImages(){
+    
+}
