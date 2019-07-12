@@ -1,0 +1,293 @@
+html {
+    background-color: rgb(38, 38, 41);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    color: rgb(199, 199, 199);
+    font-family: "Verdana", "Geneva", sans-serif;
+}
+
+header {
+    background-color: rgb(75, 75, 83);
+    color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    -webkit-app-region: drag;
+}
+
+footer {
+    background-color: rgb(56, 56, 61);
+}
+
+input[type=number] {
+    background-color: rgb(66, 66, 71);
+    outline: none;
+    color: white;
+    border: 1px solid rgb(92, 92, 100);
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button {
+    -webkit-app-region: no-drag;
+    background-color: rgb(66, 66, 71);
+    outline: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgb(92, 92, 100);
+    margin: 1px;
+}
+
+button:hover {
+    background-color: rgb(86, 86, 92);
+    cursor: pointer;
+}
+
+.btn-selected {
+    background-color: rgb(119, 119, 126);
+}
+
+.btn-selected:hover {
+    background-color: rgb(149, 149, 155);
+}
+
+select {
+    background-color: rgb(66, 66, 71);
+    border: 1px solid rgb(92, 92, 100);
+    display: inline-block;
+    color: white;
+    outline: none;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: top;
+}
+
+option {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.title-bar {
+    /*background: url("../images/weapon icons banner.png") 10px no-repeat;*/
+    height: 80px;
+    line-height: 80px;
+    padding-left: 10px;
+    font-size: 140%;
+}
+
+main {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#main-body {
+    position: relative;
+    height: 310px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    padding-top: 40px;
+}
+
+#minimize-button, #close-button {
+    outline: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+}
+
+#minimize-button:hover, #close-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#minimize-button {
+    background: url('../images/minimize.png');
+    top: 0;
+    right: 30px;
+}
+
+#close-button {
+    background: url('../images/close.png');
+    top: 0;
+    right: 0;
+}
+
+/*************************************************************/
+
+#main-body {
+    display: flex;
+}
+
+#item-selection {
+    width: 100%;
+    height: 90px;
+    min-height: 90px;
+    max-height: 90px;
+    border-bottom: 1px solid rgb(77, 77, 77);
+}
+
+#available-effects {
+    width: 100%;
+    flex: 1;
+    border-top: 1px solid rgb(126, 126, 126);
+    font-size: 90%;
+    overflow: auto;
+}
+
+/*************************************************************/
+
+#item-selection-detail {
+    margin-top: 2px;
+}
+
+#item-selection-detail select {
+    width: 124px;
+}
+
+#emplacements {
+    display: inline-block;
+}
+
+.rune-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.emplacement {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin-right: 1px;
+    margin-left: 1px;
+    background-color: rgb(66, 66, 71);
+    border: 1px solid rgb(92, 92, 100);
+    outline: none;
+    color: white;
+    text-align: center;
+}
+
+.emplacement:hover {
+    background-color: rgb(86, 86, 92);
+    cursor: pointer;
+}
+
+.selection {
+    position: absolute;
+    display: none;
+    background-color: rgb(38, 38, 41);
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid rgb(92, 92, 100);
+    border-top: none;
+    margin-left: 1px;
+    margin-right: 1px;
+    z-index: 1;
+    top: 30px;
+}
+
+.selection div {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+}
+
+.red-rune {
+    background: url('../images/red_rune.png') no-repeat center;
+    background-color: rgba(170, 58, 58, 0.5);
+    background-image: "";
+}
+
+.blue-rune {
+    background: url('../images/blue_rune.png') no-repeat center;
+    background-color: rgba(102, 102, 170, 0.5);
+    background-image: "";
+}
+
+.green-rune {
+    background: url('../images/green_rune.png') no-repeat center;
+    background-color: rgba(80, 173, 80, 0.5);
+    background-image: "";
+}
+
+.white-rune {
+    background: url('../images/white_rune.png') no-repeat center;
+    background-color: rgba(221, 224, 194, 0.5);
+    background-image: "";
+}
+
+.red-rune:hover {
+    background-color: rgba(170, 58, 58, 0.7);
+    cursor: pointer;
+}
+
+.blue-rune:hover {
+    background-color: rgba(102, 102, 170, 0.7);
+    cursor: pointer;
+}
+
+.green-rune:hover {
+    background-color: rgba(80, 173, 80, 0.7);
+    cursor: pointer;
+}
+
+.white-rune:hover {
+    background-color: rgba(221, 224, 194, 0.7);
+    cursor: pointer;
+}
+
+.rune-selected {
+    border: 1px solid rgb(202, 202, 202);
+}
+
+/*************************************************************/
+
+#effect-list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* #table-header {
+} */
+
+#effect-list tr {
+    height: 28px;
+    text-align: center;
+}
+
+#effect-list tr td {
+    vertical-align: middle;
+}
+
+.effect-line:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    cursor: pointer;
+}

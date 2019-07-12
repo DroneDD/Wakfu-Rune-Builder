@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Wakfu Rune Builder</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <header>
+      <div class="title-bar">Wakfu Rune Builder</div>
+      <button id="minimize-button"></button>
+      <button id="close-button"></button>
+    </header>
+    <main>
+      <div id="main-body">
+        <div id="item-selection"></div>
+        <div id="available-effects"></div>
+    </div>
+    </main>
+    <footer></footer>
+    <script>window.$ = window.jQuery = require('./script/jquery.min.js');</script>
+    
+    <script src="./script/front-end.js"></script>
+    <script src="./script/effect-listing.js"></script>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+
+      $('#item-selection').load('html/item-selection.html');
+    </script>
+  </body>
+</html>
