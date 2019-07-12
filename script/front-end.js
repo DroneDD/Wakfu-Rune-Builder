@@ -139,7 +139,7 @@ function LoadItemEffects(type, itemType) {
         html += "<tr class='effect-line'>";
         html += "   <td style='background: url(\"./images/" + GetRuneImage(effect.runeType) + "\") no-repeat center;'></td>";
         html += "   <td>" + effect.description + "</td>";
-        html += "   <td>" + GetEffectValue(effect, 1, false) + "-" + effect.valeurs + "</td>";
+        html += "   <td>" + GetEffectValue(effect, 1, false) + "-" + GetEffectValue(effect, 10, false) + "</td>";
         if (IsEffectBoosted(effect, $("#item-select").val()))
             html += "   <td>Oui</td>";
         else

@@ -148,4 +148,5 @@ function CalcLevelValue(step, level) {
         else
             val += step * 4; //At level 10, the increase is x4
     }
+    return val;
 }
