@@ -223,25 +223,21 @@ footer {
 .red-rune {
     background: url('../images/red_rune.png') no-repeat center;
     background-color: rgba(170, 58, 58, 0.5);
-    background-image: "";
 }
 
 .blue-rune {
     background: url('../images/blue_rune.png') no-repeat center;
     background-color: rgba(102, 102, 170, 0.5);
-    background-image: "";
 }
 
 .green-rune {
     background: url('../images/green_rune.png') no-repeat center;
     background-color: rgba(80, 173, 80, 0.5);
-    background-image: "";
 }
 
 .white-rune {
     background: url('../images/white_rune.png') no-repeat center;
     background-color: rgba(221, 224, 194, 0.5);
-    background-image: "";
 }
 
 .red-rune:hover {
@@ -289,5 +285,6 @@ footer {
 
 .effect-line:hover {
     background-color: rgba(202, 202, 202, 0.25);
+    color: white;
     cursor: pointer;
 }
