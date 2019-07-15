@@ -133,7 +133,7 @@ function GetEffectValue(effect, runeLevel, boosted){
         value *= CalcLevelValue((effect.maxValue / 20), runeLevel);
     }
 
-    return Math.round(value);
+    return -Math.round(-value);
 }
 
 function CalcLevelValue(step, level) {
@@ -148,4 +148,5 @@ function CalcLevelValue(step, level) {
         else
             val += step * 4; //At level 10, the increase is x4
     }
+    return val;
 }

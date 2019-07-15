@@ -136,11 +136,12 @@ function LoadItemEffects(type, itemType) {
     var html = "<table id='effect-list'>";
     html += "<tr id='table-header'><td style='width:30px;'>Rune</td><td>Description</td><td>Valeurs</td><td>Boost</td></tr>";
     $.each(effects, function(i, effect) {
+        var boost = IsEffectBoosted(effect, $("#item-select").val());
         html += "<tr class='effect-line'>";
         html += "   <td style='background: url(\"./images/" + GetRuneImage(effect.runeType) + "\") no-repeat center;'></td>";
         html += "   <td>" + effect.description + "</td>";
-        html += "   <td>" + GetEffectValue(effect, 1, false) + "-" + effect.valeurs + "</td>";
-        if (IsEffectBoosted(effect, $("#item-select").val()))
+        html += "   <td>" + GetEffectValue(effect, 1, boost) + "-" + GetEffectValue(effect, 10, boost) + "</td>";
+        if (boost)
             html += "   <td>Oui</td>";
         else
             html += "   <td>Non</td>";
