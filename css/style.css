@@ -30,6 +30,27 @@ footer {
     background-color: rgb(56, 56, 61);
 }
 
+/***********************************************************************************/
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(78, 78, 82); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(108, 108, 112); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(152, 152, 155);  
+  }
+
 input[type=number] {
     background-color: rgb(66, 66, 71);
     outline: none;
@@ -63,11 +84,12 @@ button:hover {
 }
 
 .btn-selected {
-    background-color: rgb(119, 119, 126);
+    background-color: rgb(98, 98, 105);
+    border-color: white;
 }
 
 .btn-selected:hover {
-    background-color: rgb(149, 149, 155);
+    background-color: rgb(116, 116, 124);
 }
 
 select {
@@ -174,6 +196,48 @@ footer {
     width: 124px;
 }
 
+#item-selector {
+    width: 122px;
+    height: 30px;
+    position: relative;
+    background-color: rgb(66, 66, 71);
+    border: 1px solid rgb(92, 92, 100);
+    color: white;
+    line-height: 22px;
+    margin-left: 3px;
+}
+
+#item-selector div {
+    background-position: left !important;
+}
+
+#item-selector div p {
+    margin-left: 30px;
+}
+
+#item-selector-content {
+    display: none;
+    background-color: rgb(66, 66, 71);
+    border: 1px solid rgb(92, 92, 100);
+    position: absolute;
+    margin-left: -3px;
+    z-index: 1;
+}
+
+#item-selector-content div {
+    /* padding: 5px 5px 5px 5px; */
+    margin-left: 3px;
+    background-position: left !important;
+}
+
+#item-selector-content div p {
+    margin-left: 30px;
+}
+
+#item-selector:hover #item-selector-content {
+    display: block;
+  }
+
 #emplacements {
     display: inline-block;
 }
@@ -264,6 +328,44 @@ footer {
     border: 1px solid rgb(202, 202, 202);
 }
 
+.casque {
+    background: url("../images/casque.png") no-repeat center;
+}
+
+.cape {
+    background: url("../images/cape.png") no-repeat center;
+}
+
+.amulette {
+    background: url("../images/amulette.png") no-repeat center;
+}
+
+.epaulettes {
+    background: url("../images/epaulettes.png") no-repeat center;
+}
+
+.plastron {
+    background: url("../images/plastron.png") no-repeat center;
+}
+
+.ceinture {
+    background: url("../images/ceinture.png") no-repeat center;
+}
+
+.anneau {
+    background: url("../images/anneau.png") no-repeat center;
+}
+
+.bottes {
+    background: url("../images/bottes.png") no-repeat center;
+}
+
+.arme {
+    background: url("../images/arme.png") no-repeat center;
+}
+
+
+
 /*************************************************************/
 
 #effect-list {
@@ -287,4 +389,14 @@ footer {
     background-color: rgba(202, 202, 202, 0.25);
     color: white;
     cursor: pointer;
+}
+
+.image-td div{
+    display: inline-block;
+    height: 28px;
+    width: 26px;
+}
+
+.effect-boosted {
+    font-style: italic;
 }

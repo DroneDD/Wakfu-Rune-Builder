@@ -134,24 +134,27 @@ function BuildRuneSelectorHtml(number) {
 function LoadItemEffects(type, itemType) {
     var effects = GetEffectList(type, itemType);
     var html = "<table id='effect-list'>";
-    html += "<tr id='table-header'><td style='width:30px;'>Rune</td><td>Description</td><td>Valeurs</td><td>Boost</td></tr>";
+    html += "<tr id='table-header'><td style='width:37px;'>Rune</td><td style='width:175px;'>Description</td><td style='width:55px;'>Valeurs</td><td>Boost</td></tr>";
     $.each(effects, function(i, effect) {
         var boost = IsEffectBoosted(effect, $("#item-select").val());
-        html += "<tr class='effect-line'>";
+        html += "<tr class='effect-line" + (boost ? " effect-boosted" : "") + "'>";
+        //Rune Image
         html += "   <td style='background: url(\"./images/" + GetRuneImage(effect.runeType) + "\") no-repeat center;'></td>";
+        //Effect Description
         html += "   <td>" + effect.description + "</td>";
+        //Effect value range
         html += "   <td>" + GetEffectValue(effect, 1, boost) + "-" + GetEffectValue(effect, 10, boost) + "</td>";
-        if (boost)
-            html += "   <td>Oui</td>";
-        else
-            html += "   <td>Non</td>";
+        //Effect boosted items
+        var boosts = GetBoostImages(effect.bonus);
+        html += "   <td class='image-td'>";
+        boosts.forEach(b => {
+            html += "   <div class='" + b + "'></div>";
+        });
+        html += "   </td>";
+
         html += "</tr>";
     });
     html += "</table>";
 
     $('#available-effects').html(html);
-}
-
-function BuildBoostImages(){
-    
 }

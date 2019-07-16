@@ -89,38 +89,36 @@ function IsEffectBoosted(effect, itemType) {
     return (effect.bonus & +itemType) == +itemType;
 }
 
-function GetItemTypeImage(itemType){
-    if (itemType == 1) {
-        return "Casque";
+function GetBoostImages(itemType) {
+    var classes = [];
+    if ((itemType & 1) == 1) {
+        classes.push("casque");
     }
-    if (itemType == 2) {
-        return "Cape";
+    if ((itemType & 2) == 2) {
+        classes.push("cape");
     }
-    if (itemType == 4) {
-        return "Amulette";
+    if ((itemType & 4) === 4) {
+        classes.push("amulette");
     }
-    if (itemType == 8) {
-        return "Épaulettes";
+    if ((itemType & 8) == 8) {
+        classes.push("epaulettes");
     }
-    if (itemType == 16) {
-        return "Plastron";
+    if ((itemType & 16) == 16) {
+        classes.push("plastron");
     }
-    if (itemType == 32) {
-        return "Ceinture";
+    if ((itemType & 32) == 32) {
+        classes.push("ceinture");
     }
-    if (itemType == 64) {
-        return "Anneau";
+    if ((itemType & 64) == 64) {
+        classes.push("anneau");
     }
-    if (itemType == 128) {
-        return "Bottes";
+    if ((itemType & 128) == 128) {
+        classes.push("bottes");
     }
-    if (itemType == 256) {
-        return "Arme";
+    if ((itemType & 256) == 256) {
+        classes.push("arme");
     }
-}
-
-function GetBoostImages(effect) {
-    //if (effect)
+    return classes;
 }
 
 function GetEffectValue(effect, runeLevel, boosted){
