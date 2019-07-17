@@ -92,22 +92,6 @@ button:hover {
     background-color: rgb(116, 116, 124);
 }
 
-select {
-    background-color: rgb(66, 66, 71);
-    border: 1px solid rgb(92, 92, 100);
-    display: inline-block;
-    color: white;
-    outline: none;
-    height: 32px;
-    line-height: 32px;
-    vertical-align: top;
-}
-
-option {
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-
 .title-bar {
     /*background: url("../images/weapon icons banner.png") 10px no-repeat;*/
     height: 80px;
@@ -192,11 +176,9 @@ footer {
     margin-top: 2px;
 }
 
-#item-selection-detail select {
-    width: 124px;
-}
-
-#item-selector {
+#item-dropdown {
+    display: inline-block;
+    vertical-align: top;
     width: 122px;
     height: 30px;
     position: relative;
@@ -204,45 +186,48 @@ footer {
     border: 1px solid rgb(92, 92, 100);
     color: white;
     line-height: 22px;
+}
+
+#item-select {
+    background-position: left !important;
     margin-left: 3px;
 }
 
-#item-selector div {
-    background-position: left !important;
-}
-
-#item-selector div p {
+#item-select p {
     margin-left: 30px;
+    line-height: 30px;
 }
 
-#item-selector-content {
+#item-dropdown-content {
     display: none;
+    width: 122px;
+    margin-left: -1px;
     background-color: rgb(66, 66, 71);
     border: 1px solid rgb(92, 92, 100);
     position: absolute;
-    margin-left: -3px;
     z-index: 1;
 }
 
-#item-selector-content div {
+#item-dropdown-content div {
     /* padding: 5px 5px 5px 5px; */
     margin-left: 3px;
+    line-height: 25px;
     background-position: left !important;
 }
 
-#item-selector-content div p {
-    margin-left: 30px;
+#item-dropdown-content div p {
+    margin-left: 33px;
 }
 
-#item-selector:hover #item-selector-content {
-    display: block;
-  }
+#item-dropdown-content div:hover {
+    background-color: rgb(106, 106, 112);
+}
 
 #emplacements {
     display: inline-block;
 }
 
-.rune-selector {
+.rune-dropdown {
     position: relative;
     display: inline-block;
 }

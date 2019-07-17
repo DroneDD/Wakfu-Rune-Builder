@@ -5,7 +5,7 @@ $(document).ready(function(){
         $(this).addClass("btn-selected");
         var html = "";
         for (let i = 0; i < $(this).val(); i++) {
-            html += "<div class='rune-selector'>"
+            html += "<div class='rune-dropdown'>"
             html += "<div id='spot-" + (i + 1).toString() + "' class='emplacement red-rune'>"
             html += "</div>";
             html += BuildRuneSelectorHtml((i + 1));
@@ -19,7 +19,14 @@ $(document).ready(function(){
         target = $(event.target);
         if(!event.target.matches('.emplacement')) {
             $('.selection').hide();
-        }        
+        }
+        if(target.closest("#item-dropdown").length == 0) {
+            $('#item-dropdown-content').hide();
+        }
+    });
+
+    $("body").on("click", "#item-select", function(){
+        $("#item-dropdown-content").show();
     });
 
     //This function allows the user to select a rune by clicking it once to see it's potential values
@@ -51,7 +58,7 @@ $(document).ready(function(){
     //This function allows the user to choose a rune in the selection menu
     $("body").on("click", ".selection div", function(){
         $('.selection').hide();
-        var emplacement = $(this).closest(".rune-selector").find(".emplacement");
+        var emplacement = $(this).closest(".rune-dropdown").find(".emplacement");
         var isSelected = emplacement.hasClass("rune-selected");
         emplacement.removeClass();
         emplacement.addClass("emplacement " + $(this).attr("class"));
