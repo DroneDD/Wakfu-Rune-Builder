@@ -4,7 +4,7 @@ $(document).ready(function(){
         $("#item-selection button").removeClass("btn-selected");
         $(this).addClass("btn-selected");
         var html = "";
-        for (let i = 0; i < $(this).val(); i++) {
+        for (let i = 0; i < $(this).val(); i++){
             html += "<div class='rune-dropdown'>"
             html += "<div id='spot-" + (i + 1).toString() + "' class='emplacement red-rune'>"
             html += "</div>";
@@ -15,18 +15,30 @@ $(document).ready(function(){
     });
 
     //this function allows the user to hide the rune selection menu by clicking outside with the left or right click
-    $(document).on("click contextmenu", function(event) { 
+    $(document).on("click contextmenu", function(event){ 
         target = $(event.target);
         if(!event.target.matches('.emplacement')) {
             $('.selection').hide();
         }
-        if(target.closest("#item-dropdown").length == 0) {
+        if(target.closest("#item-dropdown").length == 0){
             $('#item-dropdown-content').hide();
         }
     });
 
     $("body").on("click", "#item-select", function(){
         $("#item-dropdown-content").show();
+    });
+
+    //This function allows the user to change the selected item in the dropdown
+    $("body").on("click", "#item-dropdown-content div", function(){
+        $('#item-dropdown-content').hide();
+        var itemType = $(this).attr("value");
+        $("#item-select").attr("value", function() {return itemType;});
+        $("#item-select div").removeClass();
+        $("#item-select div").addClass(GetBoostImages(itemType));
+        $("#item-select p").text(GetItemTypeName(itemType));
+
+        DropdownChanged();
     });
 
     //This function allows the user to select a rune by clicking it once to see it's potential values
@@ -46,7 +58,7 @@ $(document).ready(function(){
         else
             type = "4";
 
-        LoadItemEffects(type, $("#item-select").val());
+        LoadItemEffects(type, $("#item-select").attr("value"));
     });
 
     //This function allows the user to open the selection menu by double clicking or right clicking a rune
@@ -76,7 +88,7 @@ $(document).ready(function(){
             else if (selected.hasClass("white-rune"))
                 type = "4";
             if (type)
-                LoadItemEffects(type, $("#item-select").val());
+                LoadItemEffects(type, $("#item-select").attr("value"));
         }
     });
 
@@ -97,7 +109,7 @@ $(document).ready(function(){
                     emplacement.addClass("emplacement white-rune");
                 if (selected){
                     emplacement.addClass("rune-selected");
-                    LoadItemEffects(e.key, $("#item-select").val());
+                    LoadItemEffects(e.key, $("#item-select").attr("value"));
                 }
             }
         });
@@ -105,7 +117,7 @@ $(document).ready(function(){
         $(document).unbind("keydown");
     });
 
-    $("#item-select").change(function(){
+    function DropdownChanged(){
         var type;
         var selected = $(".rune-selected");
         if (selected.hasClass("red-rune"))
@@ -117,8 +129,8 @@ $(document).ready(function(){
         else if (selected.hasClass("white-rune"))
             type = "4";
         if (type)
-            LoadItemEffects(type, $("#item-select").val());
-    });
+            LoadItemEffects(type, $("#item-select").attr("value"));
+    }
 
     $("body").on("click", ".effect-line", function(){
         
@@ -143,7 +155,7 @@ function LoadItemEffects(type, itemType) {
     var html = "<table id='effect-list'>";
     html += "<tr id='table-header'><td style='width:37px;'>Rune</td><td style='width:175px;'>Description</td><td style='width:55px;'>Valeurs</td><td>Boost</td></tr>";
     $.each(effects, function(i, effect) {
-        var boost = IsEffectBoosted(effect, $("#item-select").val());
+        var boost = IsEffectBoosted(effect, $("#item-select").attr("value"));
         html += "<tr class='effect-line" + (boost ? " effect-boosted" : "") + "'>";
         //Rune Image
         html += "   <td style='background: url(\"./images/" + GetRuneImage(effect.runeType) + "\") no-repeat center;'></td>";

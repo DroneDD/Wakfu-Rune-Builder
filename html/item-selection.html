@@ -1,32 +1,29 @@
-Emplacements:
-<button id="btn-1" value=1>1</button><button id="btn-2" value=2>2</button><button id="btn-3" value=3>3</button><button id="btn-4" value=4>4</button>
-<div id="item-selection-detail">
-
-    <div id="item-dropdown">
-        <div id="item-select" class="casque"><p>Casque</p></div>
-        <div id="item-dropdown-content">
-            <div class="casque"><p>Casque</p></div>
-            <div class="cape"><p>Cape</p></div>
-            <div class="amulette"><p>Amulette</p></div>
-            <div class="epaulettes"><p>Épaulettes</p></div>
-            <div class="plastron"><p>Plastron</p></div>
-            <div class="ceinture"><p>Ceinture</p></div>
-            <div class="anneau"><p>Anneau</p></div>
-            <div class="bottes"><p>Bottes</p></div>
-            <div class="arme"><p>Arme</p></div>
-        </div>
-    </div>
-
-    <!-- <select id="item-select">
-        <option id="Casque" value=1>Casque</option>
-        <option id="Cape" value=2>Cape</option>
-        <option id="Amulette" value=4>Amulette</option>
-        <option id="Epaulettes" value=8>Épaulettes</option>
-        <option id="Plastron" value=16>Plastron</option>
-        <option id="Ceinture" value=32>Ceinture</option>
-        <option id="Anneau" value=64>Anneau</option>
-        <option id="Bottes" value=128>Bottes</option>
-        <option id="Arme" value=256>Arme</option>
-    </select> -->
-    <div id="emplacements"></div>
-</div>
+<table>
+    <tr>
+        <td style="width: 150px;"><p>Emplacements:</p></td>
+        <td>
+            <button id="btn-1" value=1>1</button><button id="btn-2" value=2>2</button><button id="btn-3" value=3>3</button><button id="btn-4" value=4>4</button>
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <div id="item-selection-detail">
+                <div id="item-dropdown" tabindex="0">
+                    <div id="item-select" value=1><div class="casque"></div><p style="display: inline-block">Casque</p><span></span><div id="dropdown-arrow"></div></div>
+                    <div id="item-dropdown-content">
+                        <div id="casque" value=1><div class="casque"></div><p>Casque</p></div>
+                        <div id="cape" value=2><div class="cape"></div><p>Cape</p></div>
+                        <div id="amulette" value=4><div class="amulette"></div><p>Amulette</p></div>
+                        <div id="epaulettes" value=8><div class="epaulettes"></div><p>Épaulettes</p></div>
+                        <div id="plastron" value=16><div class="plastron"></div><p>Plastron</p></div>
+                        <div id="ceinture" value=32><div class="ceinture"></div><p>Ceinture</p></div>
+                        <div id="anneau" value=64><div class="anneau"></div><p>Anneau</p></div>
+                        <div id="bottes" value=128><div class="bottes"></div><p>Bottes</p></div>
+                        <div id="arme" value=256><div class="arme"></div><p>Arme</p></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td><div id="emplacements"></div></td>
+    </tr>
+</table>
