@@ -92,22 +92,6 @@ button:hover {
     background-color: rgb(116, 116, 124);
 }
 
-select {
-    background-color: rgb(66, 66, 71);
-    border: 1px solid rgb(92, 92, 100);
-    display: inline-block;
-    color: white;
-    outline: none;
-    height: 32px;
-    line-height: 32px;
-    vertical-align: top;
-}
-
-option {
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-
 .title-bar {
     /*background: url("../images/weapon icons banner.png") 10px no-repeat;*/
     height: 80px;
@@ -164,6 +148,13 @@ footer {
     right: 0;
 }
 
+#dropdown-arrow {
+    background: url('../images/drop.png') no-repeat center;
+    float: right;
+    width: 18px !important;
+    margin-right: 4px;
+}
+
 /*************************************************************/
 
 #main-body {
@@ -189,60 +180,79 @@ footer {
 /*************************************************************/
 
 #item-selection-detail {
-    margin-top: 2px;
+    vertical-align: top;
 }
 
-#item-selection-detail select {
-    width: 124px;
-}
-
-#item-selector {
-    width: 122px;
+#item-dropdown {
+    display: inline-block;
+    vertical-align: top; 
+    width: 142px;
     height: 30px;
     position: relative;
     background-color: rgb(66, 66, 71);
     border: 1px solid rgb(92, 92, 100);
     color: white;
     line-height: 22px;
+}
+
+#item-dropdown:hover {
+    cursor: pointer;
+    background-color: rgb(106, 106, 112);
+}
+
+#item-dropdown:focus {
+    background-color: rgb(82, 82, 87);
+}
+
+#item-select div {
+    display: inline-block;
+    height: 30px;
+    width: 26px;
     margin-left: 3px;
-}
-
-#item-selector div {
     background-position: left !important;
+    vertical-align: top;
 }
 
-#item-selector div p {
-    margin-left: 30px;
+#item-select p {
+    margin-left: 3px;
+    line-height: 30px;
 }
 
-#item-selector-content {
+#item-dropdown-content {
     display: none;
+    width: 142px;
+    margin-left: -1px;
     background-color: rgb(66, 66, 71);
     border: 1px solid rgb(92, 92, 100);
     position: absolute;
-    margin-left: -3px;
     z-index: 1;
 }
 
-#item-selector-content div {
-    /* padding: 5px 5px 5px 5px; */
+#item-dropdown-content div div {
+    display: inline-block;
+    height: 25px;
+    width: 26px;
     margin-left: 3px;
     background-position: left !important;
+    vertical-align: top;
 }
 
-#item-selector-content div p {
-    margin-left: 30px;
+#item-dropdown-content div p {
+    display: inline-block;
+    line-height: 25px;
+    margin-left: 3px;
 }
 
-#item-selector:hover #item-selector-content {
-    display: block;
-  }
+#item-dropdown-content div:hover {
+    cursor: pointer;
+    background-color: rgb(106, 106, 112);
+}
 
 #emplacements {
     display: inline-block;
 }
 
-.rune-selector {
+.rune-dropdown {
     position: relative;
     display: inline-block;
 }
