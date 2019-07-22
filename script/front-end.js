@@ -26,7 +26,12 @@ $(document).ready(function(){
     });
 
     $("body").on("click", "#item-select", function(){
-        $("#item-dropdown-content").show();
+        if ($("#item-dropdown-content").is(":visible")){
+            $("#item-dropdown-content").hide();
+        }
+        else{
+            $("#item-dropdown-content").show();
+        }
     });
 
     //This function allows the user to change the selected item in the dropdown
