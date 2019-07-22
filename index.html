@@ -20,13 +20,14 @@
     </main>
     <footer></footer>
     <script>window.$ = window.jQuery = require('./script/jquery.min.js');</script>
-    
+    <script src="./script/build-set.js"></script>
     <script src="./script/front-end.js"></script>
     <script src="./script/effect-listing.js"></script>
     <script>
       // You can also require other files to run in this process
       require('./renderer.js');
 
+      LoadBaseBuild();
       $('#item-selection').load('html/item-selection.html');
     </script>
   </body>
