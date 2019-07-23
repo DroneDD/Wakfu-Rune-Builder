@@ -30,5 +30,12 @@ function LoadBaseBuild() {
             Slots: 4,
             Runes: []
         });
+        for (var i2 = 0; i2 < ItemBuild.Items[i].Slots; i2++) {
+            ItemBuild.Items[i].push({
+                RuneType: 1,
+                RuneEffectID: 0,
+                RuneLevel: 10
+            });
+        }
     }
 }

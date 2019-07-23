@@ -7,13 +7,27 @@ $(document).ready(function(){
         $("#item-selection button").removeClass("btn-selected");
         $(this).addClass("btn-selected");
         var html = "";
-        for (let i = 0; i < $(this).val(); i++){
+        var runeAmount = $(this).val();
+
+        //Update the Build item number of runes
+        var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
+        item.Slots = runeAmount;
+        item.Runes = [];
+
+        for (let i = 0; i < runeAmount; i++){
             html += "<div class='rune-dropdown'>"
             html += "<div id='spot-" + (i + 1).toString() + "' class='emplacement red-rune'>"
             html += "</div>";
             html += BuildRuneSelectorHtml((i + 1));
             html += "</div>";
+
+            item.push({
+                RuneType: 1,
+                RuneEffectID: 0,
+                RuneLevel: 10
+            });
         }
+
         $("#emplacements").html(html);
     });
 
@@ -128,7 +142,10 @@ $(document).ready(function(){
 
     //This function selects the rune effect
     $("body").on("click", ".effect-line", function(){
-        
+        var effectID = $(this).attr("value");
+        var selectedRuneIndex = $(".rune-selected").attr("value");
+        var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
+        item.Runes[(selectedRuneIndex - 1)]
     });
 });
 
@@ -151,7 +168,7 @@ function LoadItemEffects(type, itemType) {
     html += "<tr id='table-header'><td style='width:37px;'>Rune</td><td style='width:175px;'>Description</td><td style='width:55px;'>Valeurs</td><td>Boost</td></tr>";
     $.each(effects, function(i, effect) {
         var boost = IsEffectBoosted(effect, $("#item-select").attr("value"));
-        html += "<tr class='effect-line" + (boost ? " effect-boosted" : "") + "'>";
+        html += "<tr class='effect-line" + (boost ? " effect-boosted" : "") + "' value=" + effect.runeEffectID +">";
         //Rune Image
         html += "   <td style='background: url(\"./images/" + GetRuneImage(effect.runeType) + "\") no-repeat center;'></td>";
         //Effect Description
