@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    LoadBuild();
+
     //This function allows the user to change the number of available runes on an item
     $("#item-selection button").click(function(){
         $("#item-selection button").removeClass("btn-selected");
@@ -25,8 +28,14 @@ $(document).ready(function(){
         }
     });
 
+    //this function allows the user to open the dropdown menu to select the needed item
     $("body").on("click", "#item-select", function(){
-        $("#item-dropdown-content").show();
+        if ($("#item-dropdown-content").is(":visible")){
+            $("#item-dropdown-content").hide();
+        }
+        else{
+            $("#item-dropdown-content").show();
+        }
     });
 
     //This function allows the user to change the selected item in the dropdown
@@ -117,21 +126,7 @@ $(document).ready(function(){
         $(document).unbind("keydown");
     });
 
-    function DropdownChanged(){
-        var type;
-        var selected = $(".rune-selected");
-        if (selected.hasClass("red-rune"))
-            type = "1";
-        else if (selected.hasClass("blue-rune"))
-            type = "2";
-        else if (selected.hasClass("green-rune"))
-            type = "3";
-        else if (selected.hasClass("white-rune"))
-            type = "4";
-        if (type)
-            LoadItemEffects(type, $("#item-select").attr("value"));
-    }
-
+    //This function selects the rune effect
     $("body").on("click", ".effect-line", function(){
         
     });
@@ -176,4 +171,54 @@ function LoadItemEffects(type, itemType) {
     html += "</table>";
 
     $('#available-effects').html(html);
+}
+
+//This function is called when the user selected and item type
+function DropdownChanged(){
+    var type;
+    var selected = $(".rune-selected");
+    if (selected.hasClass("red-rune"))
+        type = "1";
+    else if (selected.hasClass("blue-rune"))
+        type = "2";
+    else if (selected.hasClass("green-rune"))
+        type = "3";
+    else if (selected.hasClass("white-rune"))
+        type = "4";
+    if (type)
+        LoadItemEffects(type, $("#item-select").attr("value"));
+}
+
+//This function populates and prefills the form with the current Build
+function LoadBuild() {
+    var firstItem = ItemBuild.Items[0];
+    LoadItem(firstItem);
+}
+
+function LoadItem(item) {
+    var slots = item.Slots
+
+    $("#item-selection button").removeClass("btn-selected");
+    if (slots == 1) {
+        $("#btn-1").addClass("btn-selected");
+    }
+    if (slots == 2) {
+        $("#btn-2").addClass("btn-selected");
+    }
+    if (slots == 3) {
+        $("#btn-3").addClass("btn-selected");
+    }
+    if (slots == 4) {
+        $("#btn-4").addClass("btn-selected");
+    }
+    
+    var html = "";
+    for (let i = 0; i < slots; i++){
+        html += "<div class='rune-dropdown'>"
+        html += "<div id='spot-" + (i + 1).toString() + "' class='emplacement red-rune'>"
+        html += "</div>";
+        html += BuildRuneSelectorHtml((i + 1));
+        html += "</div>";
+    }
+    $("#emplacements").html(html);
 }

@@ -1,30 +1,22 @@
-var ItemRuneSetup = {
-    SetupName: "",
-    ItemType: 1,
-    ItemLevel: 200,
-    Slots: 4,
-    Runes: []
-};
-
 function GetEffectList(type, itemType, itemLevel){
     var effectList = [];
-    effectList.push({runeType: "2", maxValue: 20, description: "Maîtrise Élémentaire", bonus: 18});
-    effectList.push({runeType: "1", maxValue: 30, description: "Maîtrise Mêlée", bonus: 3});
-    effectList.push({runeType: "1", maxValue: 30, description: "Maîtrise Distance", bonus: 288});
-    effectList.push({runeType: "1", maxValue: 30, description: "Maîtrise Monocible", bonus: 129});
-    effectList.push({runeType: "1", maxValue: 30, description: "Maîtrise Zone", bonus: 36});
-    effectList.push({runeType: "1", maxValue: 40, description: "Maîtrise Berserk", bonus: 6});
-    effectList.push({runeType: "3", maxValue: 30, description: "Maîtrise Dos", bonus: 160});
-    effectList.push({runeType: "3", maxValue: 30, description: "Maîtrise Critique", bonus: 264});
-    effectList.push({runeType: "1", maxValue: 25, description: "Résistance Terre", bonus: 144});
-    effectList.push({runeType: "2", maxValue: 25, description: "Résistance Eau", bonus: 24});
-    effectList.push({runeType: "2", maxValue: 25, description: "Résistence Air", bonus: 18});
-    effectList.push({runeType: "3", maxValue: 25, description: "Résistance Feu", bonus: 48});
-    effectList.push({runeType: "2", maxValue: 80, description: "Vie", bonus: 257});
-    effectList.push({runeType: "2", maxValue: 40, description: "Soin", bonus: 12});
-    effectList.push({runeType: "2", maxValue: 60, description: "Tacle", bonus: 64});
-    effectList.push({runeType: "3", maxValue: 60, description: "Esquive", bonus: 64});
-    effectList.push({runeType: "3", maxValue: 40, description: "Initiative", bonus: 6});
+    effectList.push({runeType: "2", runeEffectID: 1,  maxValue: 20, bonus: 18, description: "Maîtrise Élémentaire"});
+    effectList.push({runeType: "1", runeEffectID: 2,  maxValue: 30, bonus: 3,   description: "Maîtrise Mêlée"});
+    effectList.push({runeType: "1", runeEffectID: 3,  maxValue: 30, bonus: 288, description: "Maîtrise Distance"});
+    effectList.push({runeType: "1", runeEffectID: 4,  maxValue: 30, bonus: 129, description: "Maîtrise Monocible"});
+    effectList.push({runeType: "1", runeEffectID: 5,  maxValue: 30, bonus: 36,  description: "Maîtrise Zone"});
+    effectList.push({runeType: "1", runeEffectID: 6,  maxValue: 40, bonus: 6,  description: "Maîtrise Berserk"});
+    effectList.push({runeType: "3", runeEffectID: 7,  maxValue: 30, bonus: 160,  description: "Maîtrise Dos"});
+    effectList.push({runeType: "3", runeEffectID: 8,  maxValue: 30, bonus: 264, description: "Maîtrise Critique"});
+    effectList.push({runeType: "1", runeEffectID: 9,  maxValue: 25, bonus: 144, description: "Résistance Terre"});
+    effectList.push({runeType: "2", runeEffectID: 10, maxValue: 25, bonus: 24,  description: "Résistance Eau"});
+    effectList.push({runeType: "2", runeEffectID: 11, maxValue: 25, bonus: 18,  description: "Résistence Air"});
+    effectList.push({runeType: "3", runeEffectID: 12, maxValue: 25, bonus: 48,  description: "Résistance Feu"});
+    effectList.push({runeType: "2", runeEffectID: 13, maxValue: 80, bonus: 257, description: "Vie"});
+    effectList.push({runeType: "2", runeEffectID: 14, maxValue: 40, bonus: 12,   description: "Soin"});
+    effectList.push({runeType: "2", runeEffectID: 15, maxValue: 60, bonus: 64,  description: "Tacle"});
+    effectList.push({runeType: "3", runeEffectID: 16, maxValue: 60, bonus: 64,  description: "Esquive"});
+    effectList.push({runeType: "3", runeEffectID: 17, maxValue: 40, bonus: 6,   description: "Initiative"});
 
     if (type != "4")
         effectList = effectList.filter(function(a) {return a.runeType == type});
