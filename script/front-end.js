@@ -15,20 +15,13 @@ $(document).ready(function(){
         item.Runes = [];
 
         for (let i = 0; i < runeAmount; i++){
-            html += "<div class='rune-dropdown'>"
-            html += "<div id='spot-" + (i + 1).toString() + "' class='emplacement red-rune'>"
-            html += "</div>";
-            html += BuildRuneSelectorHtml((i + 1));
-            html += "</div>";
-
-            item.push({
+            item.Runes.push({
                 RuneType: 1,
                 RuneEffectID: 0,
-                RuneLevel: 10
+                RuneLevel: 0
             });
         }
-
-        $("#emplacements").html(html);
+        BuildRuneSlots(runeAmount, item)
     });
 
     //this function allows the user to hide the rune selection menu by clicking outside with the left or right click
@@ -78,7 +71,7 @@ $(document).ready(function(){
             type = "2";
         else if ($(this).hasClass("green-rune"))
             type = "3";
-        else
+        else if ($(this).hasClass("white-rune"))
             type = "4";
 
         LoadItemEffects(type, $("#item-select").attr("value"));
@@ -145,9 +138,26 @@ $(document).ready(function(){
         var effectID = $(this).attr("value");
         var selectedRuneIndex = $(".rune-selected").attr("value");
         var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
-        item.Runes[(selectedRuneIndex - 1)]
+        item.Runes[(selectedRuneIndex - 1)].RuneEffectID = effectID;
+        item.Runes[(selectedRuneIndex - 1)].RuneLevel = 1;
+        var currentRune = $(".rune-selected");
+        currentRune.removeClass();
+        currentRune.addClass("emplacement " + GetRuneClass(item.Runes[(selectedRuneIndex - 1)].RuneType) + "-filled rune-selected");
     });
 });
+
+//This function builds up to 4 rune slots with the corresponding rune image for the current item
+function BuildRuneSlots(slots, item){
+    var html = "";
+    for (let i = 0; i < slots; i++){
+        html += "<div class='rune-dropdown'>"
+        html += "<div id='spot-" + (i + 1).toString() + "' class='emplacement " + GetRuneClass(item.Runes[i].RuneType) + (item.Runes[i].RuneEffectID != 0 ? "-filled" : "") + "' value='" + (i + 1) + "'>"
+        html += "</div>";
+        html += BuildRuneSelectorHtml((i + 1));
+        html += "</div>";
+    }
+    $("#emplacements").html(html);
+}
 
 //This function builds the selection menu for every available slot on an item
 function BuildRuneSelectorHtml(number) {
@@ -229,13 +239,5 @@ function LoadItem(item) {
         $("#btn-4").addClass("btn-selected");
     }
     
-    var html = "";
-    for (let i = 0; i < slots; i++){
-        html += "<div class='rune-dropdown'>"
-        html += "<div id='spot-" + (i + 1).toString() + "' class='emplacement red-rune'>"
-        html += "</div>";
-        html += BuildRuneSelectorHtml((i + 1));
-        html += "</div>";
-    }
-    $("#emplacements").html(html);
+    BuildRuneSlots(slots, item);
 }

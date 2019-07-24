@@ -31,10 +31,10 @@ function LoadBaseBuild() {
             Runes: []
         });
         for (var i2 = 0; i2 < ItemBuild.Items[i].Slots; i2++) {
-            ItemBuild.Items[i].push({
+            ItemBuild.Items[i].Runes.push({
                 RuneType: 1,
-                RuneEffectID: 0,
-                RuneLevel: 10
+                RuneEffectID: 0, //RuneEffectID == 0 means nothing selected
+                RuneLevel: 0 //RuneLevel == 0 means nothing selected
             });
         }
     }

@@ -314,6 +314,26 @@ footer {
     background-color: rgba(221, 224, 194, 0.5);
 }
 
+.red-rune-filled {
+    background: url('../images/red_rune_filled.png') no-repeat center;
+    background-color: rgba(170, 58, 58, 0.5);
+}
+
+.blue-rune-filled {
+    background: url('../images/blue_rune_filled.png') no-repeat center;
+    background-color: rgba(102, 102, 170, 0.5);
+}
+
+.green-rune-filled {
+    background: url('../images/green_rune_filled.png') no-repeat center;
+    background-color: rgba(80, 173, 80, 0.5);
+}
+
+.white-rune-filled {
+    background: url('../images/white_rune_filled.png') no-repeat center;
+    background-color: rgba(221, 224, 194, 0.5);
+}
+
 .red-rune:hover {
     background-color: rgba(170, 58, 58, 0.7);
     cursor: pointer;
@@ -330,6 +350,26 @@ footer {
 }
 
 .white-rune:hover {
+    background-color: rgba(221, 224, 194, 0.7);
+    cursor: pointer;
+}
+
+.red-rune-filled:hover {
+    background-color: rgba(170, 58, 58, 0.7);
+    cursor: pointer;
+}
+
+.blue-rune-filled:hover {
+    background-color: rgba(102, 102, 170, 0.7);
+    cursor: pointer;
+}
+
+.green-rune-filled:hover {
+    background-color: rgba(80, 173, 80, 0.7);
+    cursor: pointer;
+}
+
+.white-rune-filled:hover {
     background-color: rgba(221, 224, 194, 0.7);
     cursor: pointer;
 }

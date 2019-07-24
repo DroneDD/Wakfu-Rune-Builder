@@ -47,6 +47,21 @@ function GetRuneImage(runeType){
     }
 }
 
+function GetRuneClass(runeType){
+    if (runeType == "1"){
+        return "red-rune";
+    }
+    if (runeType == "2"){
+        return "blue-rune";
+    }
+    if (runeType == "3"){
+        return "green-rune";
+    }
+    if (runeType == "4"){
+        return "white-rune";
+    }
+}
+
 function GetItemTypeName(itemType){
     if (itemType == 1) {
         return "Casque";
