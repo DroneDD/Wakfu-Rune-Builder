@@ -8,20 +8,20 @@ var ItemRuneSetup = {
 
 function GetEffectList(type, itemType, itemLevel){
     var effectList = [];
-    effectList.push({runeType: "2", maxValue: 20, description: "Maîtrise Élémentaire", bonus: 144});
+    effectList.push({runeType: "2", maxValue: 20, description: "Maîtrise Élémentaire", bonus: 18});
     effectList.push({runeType: "1", maxValue: 30, description: "Maîtrise Mêlée", bonus: 3});
     effectList.push({runeType: "1", maxValue: 30, description: "Maîtrise Distance", bonus: 288});
     effectList.push({runeType: "1", maxValue: 30, description: "Maîtrise Monocible", bonus: 129});
     effectList.push({runeType: "1", maxValue: 30, description: "Maîtrise Zone", bonus: 36});
-    effectList.push({runeType: "1", maxValue: 40, description: "Maîtrise Berserk", bonus: 36});
-    effectList.push({runeType: "3", maxValue: 30, description: "Maîtrise Dos", bonus: 34});
+    effectList.push({runeType: "1", maxValue: 40, description: "Maîtrise Berserk", bonus: 6});
+    effectList.push({runeType: "3", maxValue: 30, description: "Maîtrise Dos", bonus: 160});
     effectList.push({runeType: "3", maxValue: 30, description: "Maîtrise Critique", bonus: 264});
     effectList.push({runeType: "1", maxValue: 25, description: "Résistance Terre", bonus: 144});
     effectList.push({runeType: "2", maxValue: 25, description: "Résistance Eau", bonus: 24});
     effectList.push({runeType: "2", maxValue: 25, description: "Résistence Air", bonus: 18});
     effectList.push({runeType: "3", maxValue: 25, description: "Résistance Feu", bonus: 48});
     effectList.push({runeType: "2", maxValue: 80, description: "Vie", bonus: 257});
-    effectList.push({runeType: "2", maxValue: 40, description: "Soin", bonus: 6});
+    effectList.push({runeType: "2", maxValue: 40, description: "Soin", bonus: 12});
     effectList.push({runeType: "2", maxValue: 60, description: "Tacle", bonus: 64});
     effectList.push({runeType: "3", maxValue: 60, description: "Esquive", bonus: 64});
     effectList.push({runeType: "3", maxValue: 40, description: "Initiative", bonus: 6});
