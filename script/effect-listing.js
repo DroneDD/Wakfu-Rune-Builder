@@ -1,19 +1,19 @@
 function GetEffectList(type, itemType, itemLevel){
     var effectList = [];
-    effectList.push({runeType: "2", runeEffectID: 1,  maxValue: 20, bonus: 144, description: "Maîtrise Élémentaire"});
+    effectList.push({runeType: "2", runeEffectID: 1,  maxValue: 20, bonus: 18, description: "Maîtrise Élémentaire"});
     effectList.push({runeType: "1", runeEffectID: 2,  maxValue: 30, bonus: 3,   description: "Maîtrise Mêlée"});
     effectList.push({runeType: "1", runeEffectID: 3,  maxValue: 30, bonus: 288, description: "Maîtrise Distance"});
     effectList.push({runeType: "1", runeEffectID: 4,  maxValue: 30, bonus: 129, description: "Maîtrise Monocible"});
     effectList.push({runeType: "1", runeEffectID: 5,  maxValue: 30, bonus: 36,  description: "Maîtrise Zone"});
-    effectList.push({runeType: "1", runeEffectID: 6,  maxValue: 40, bonus: 36,  description: "Maîtrise Berserk"});
-    effectList.push({runeType: "3", runeEffectID: 7,  maxValue: 30, bonus: 34,  description: "Maîtrise Dos"});
+    effectList.push({runeType: "1", runeEffectID: 6,  maxValue: 40, bonus: 6,  description: "Maîtrise Berserk"});
+    effectList.push({runeType: "3", runeEffectID: 7,  maxValue: 30, bonus: 160,  description: "Maîtrise Dos"});
     effectList.push({runeType: "3", runeEffectID: 8,  maxValue: 30, bonus: 264, description: "Maîtrise Critique"});
     effectList.push({runeType: "1", runeEffectID: 9,  maxValue: 25, bonus: 144, description: "Résistance Terre"});
     effectList.push({runeType: "2", runeEffectID: 10, maxValue: 25, bonus: 24,  description: "Résistance Eau"});
     effectList.push({runeType: "2", runeEffectID: 11, maxValue: 25, bonus: 18,  description: "Résistence Air"});
     effectList.push({runeType: "3", runeEffectID: 12, maxValue: 25, bonus: 48,  description: "Résistance Feu"});
     effectList.push({runeType: "2", runeEffectID: 13, maxValue: 80, bonus: 257, description: "Vie"});
-    effectList.push({runeType: "2", runeEffectID: 14, maxValue: 40, bonus: 6,   description: "Soin"});
+    effectList.push({runeType: "2", runeEffectID: 14, maxValue: 40, bonus: 12,   description: "Soin"});
     effectList.push({runeType: "2", runeEffectID: 15, maxValue: 60, bonus: 64,  description: "Tacle"});
     effectList.push({runeType: "3", runeEffectID: 16, maxValue: 60, bonus: 64,  description: "Esquive"});
     effectList.push({runeType: "3", runeEffectID: 17, maxValue: 40, bonus: 6,   description: "Initiative"});
