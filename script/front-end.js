@@ -65,11 +65,11 @@ $(document).ready(function(){
             $('#item-dropdown-content').hide();
             var itemType = $(this).attr("value");
             if (e.keyCode == 38){
-                if (itemType == 1) { return; }
+                if (itemType <= 1) { return; }
                 itemType /= 2;
             }
             if (e.keyCode == 40){
-                if (itemType == 256) { return; }
+                if (itemType >= 512) { return; }
                 itemType *= 2;
             }
             $("#item-select").attr("value", function() {return itemType;});
