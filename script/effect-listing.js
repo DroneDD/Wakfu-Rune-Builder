@@ -163,5 +163,5 @@ function CalcLevelValue(step, level){
 }
 
 function GetEffectRange(effect, boosted){
-    return GetEffectValue(effect, 1, boosted) + "-" + GetEffectValue(effect, 10, boost);
+    return GetEffectValue(effect, 1, boosted) + "-" + GetEffectValue(effect, 10, boosted);
 }
