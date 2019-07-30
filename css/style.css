@@ -423,9 +423,6 @@ footer {
     width: 100%;
 }
 
-/* #table-header {
-} */
-
 #effect-list tr {
     height: 28px;
     text-align: center;
@@ -439,6 +436,30 @@ footer {
     background-color: rgba(202, 202, 202, 0.25);
     color: white;
     cursor: pointer;
+}
+
+.effect-level-list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.effect-level-list tr {
+    height: 28px;
+    text-align: center;
+}
+
+.effect-level-list tr td {
+    vertical-align: middle;
+}
+
+.effect-level:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+    cursor: pointer;
+}
+
+.effect-level-selected {
+    background-color: rgba(134, 134, 134, 0.25);
 }
 
 .image-td div{

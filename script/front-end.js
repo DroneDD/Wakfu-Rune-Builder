@@ -87,11 +87,7 @@ $(document).ready(function(){
         $(".rune-selected").removeClass("rune-selected");
         $(this).addClass("rune-selected");
 
-        //CALL THE FUNCTION TO CHANGE THE DISPLAYED EFFECTS HERE
-        var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
-        var type = item.Runes[($(this).attr("value") - 1)].RuneType;
-
-        LoadItemEffects(type, $("#item-select").attr("value"));
+        BuildRuneSlots();
     });
 
     //This function allows the user to open the selection menu by double clicking or right clicking a rune
@@ -221,10 +217,37 @@ function LoadItemEffectHandler() {
     var selectedRune = $(".rune-selected");
     var slotID;
     if (selectedRune.length){
-        slotID = "#slot-" + selectedRune.attr("value");
+        slotID = selectedRune.attr("value");
     }
+    var rune = item.Runes[(slotID - 1)];
+    var effect = GetEffectList(null, null, rune.RuneEffectID)
+    var boost = IsEffectBoosted(effect, $("#item-select").attr("value"));
 
     var html;
+    html = "<span style='width:50%;display:inline-block;'>";
+    html += "<table class='effect-level-list" + (boost ? " effect-boosted" : "") + "'>";
+    html += "<tr style='font-style:normal;'><td>Level</td><td>Valeur</td></tr>";
+    for (let i = 1; i <= 5; i++) {
+        html += "<tr class='effect-level" + (rune.RuneLevel == i ? " effect-level-selected" : "") + "' value='" + (i + 5) + "'>";
+        html += "   <td>" + i + "</td>";
+        html += "   <td>" + GetEffectValue(effect, i, boost) + "</td>";
+        html += "</tr>";
+    }
+    html += "</table>";
+
+    html += "</span><span style='width:50%;display:inline-block;'>";
+
+    html += "<table class='effect-level-list" + (boost ? " effect-boosted" : "") + "'>";
+    html += "<tr style='font-style:normal;'><td>Level</td><td>Valeur</td></tr>";
+    for (let i = 1; i <= 5; i++) {
+        html += "<tr class='effect-level" + (rune.RuneLevel == (i + 5) ? " effect-level-selected" : "") + "' value='" + (i + 5) + "'>";
+        html += "   <td>" + (i + 5) + "</td>";
+        html += "   <td>" + GetEffectValue(effect, (i + 5), boost) + "</td>";
+        html += "</tr>";
+    }
+    html += "</table>";
+    html += "</span>";
+
     $('#available-effects').html(html);
 }
 
