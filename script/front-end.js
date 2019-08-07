@@ -107,6 +107,10 @@ $(document).ready(function(){
         item.Runes[(emplacement.attr("value") - 1)].RuneType = +$(this).attr("value");
         item.Runes[(emplacement.attr("value") - 1)].RuneEffectID = 0;
         item.Runes[(emplacement.attr("value") - 1)].RuneLevel = 0;
+
+        //Reset the sublimation
+        item.SublimationID = 0;
+
         BuildRuneSlots();
     });
 
@@ -121,6 +125,10 @@ $(document).ready(function(){
                 item.Runes[(emplacement.attr("value") - 1)].RuneType = +e.key;
                 item.Runes[(emplacement.attr("value") - 1)].RuneEffectID = 0;
                 item.Runes[(emplacement.attr("value") - 1)].RuneLevel = 0;
+
+                //Reset the sublimation
+                item.SublimationID = 0;
+
                 BuildRuneSlots();
             }
         });
@@ -138,6 +146,38 @@ $(document).ready(function(){
 
         BuildRuneSlots();
     });
+
+    //This function selects the rune effect
+    $("body").on("click", ".effect-level", function(){
+        var runeLevel = $(this).attr("value");
+        var selectedRuneIndex = $(".rune-selected").attr("value");
+        var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
+        item.Runes[(selectedRuneIndex - 1)].RuneLevel = runeLevel;
+
+        BuildRuneSlots();
+    });
+
+    //This function changes the selected tab
+    $("body").on("click", "#tab-selector div", function(){
+        $(".tab-selected").removeClass("tab-selected");
+        $(this).addClass("tab-selected");
+
+        BuildRuneSlots();
+    });
+
+    //This function selects the rune sublimation
+    $("body").on("click", ".sublimation-line", function(){
+        var sublimationID = $(this).attr("value");
+        var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
+        if (item.SublimationID == sublimationID){
+            item.SublimationID = 0;
+        }
+        else {
+            item.SublimationID = sublimationID;
+        }
+
+        BuildRuneSlots();
+    });
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -147,6 +187,7 @@ $(document).ready(function(){
 //This function builds up to 4 rune slots with the corresponding rune image for the current item
 function BuildRuneSlots(){
     var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
+    var selectedTab = $(".tab-selected").attr("value");
     var selectedRune = $(".rune-selected");
     var slotID;
     if (selectedRune.length){
@@ -154,21 +195,34 @@ function BuildRuneSlots(){
     }
     var html = "";
     for (let i = 0; i < item.Slots; i++){
+        var rune = item.Runes[i];
+        var effect = GetEffectList(null, null, rune.RuneEffectID);
+        var boost = IsEffectBoosted(effect, $("#item-select").attr("value"));
         html += "<div class='rune-dropdown'>"
-        html += "<div id='slot-" + (i + 1).toString() + "' class='emplacement " + GetRuneClass(item.Runes[i].RuneType) + (item.Runes[i].RuneEffectID != 0 ? "-filled" : "") + "' value='" + (i + 1) + "'>"
+        html += "<div id='slot-" + (i + 1).toString() + "' class='emplacement " + GetRuneClass(rune.RuneType) + (rune.RuneEffectID != 0 ? "-filled' title='" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost) : "") + "' value='" + (i + 1) + "'>"
         html += "</div>";
         html += BuildRuneSelectorHtml((i + 1));
         html += "</div>";
     }
     $("#emplacements").html(html);
-    if ($(slotID).length){
-        $(slotID).addClass("rune-selected");
-        if (item.Runes[($(slotID).attr("value") - 1)].RuneEffectID != 0)
-            LoadItemEffectHandler();
-        else
-            LoadItemEffects(item.Runes[($(slotID).attr("value") - 1)].RuneType, $("#item-select").attr("value"));
+
+    if (selectedTab == "1"){
+        if ($(slotID).length){
+            $(slotID).addClass("rune-selected");
+            if (item.Runes[($(slotID).attr("value") - 1)].RuneEffectID != 0)
+                LoadItemEffectHandler();
+            else
+                LoadItemEffects(item.Runes[($(slotID).attr("value") - 1)].RuneType, $("#item-select").attr("value"));
+        }
+        else { $('#available-effects').html(""); }
     }
-    else { $('#available-effects').html(""); }
+    else if (selectedTab == "2"){
+        if ($(slotID).length){
+            $(slotID).addClass("rune-selected");
+        }
+        LoadSublimations();
+    }
+
 }
 
 //This function builds the selection menu for every available slot on an item
@@ -220,7 +274,7 @@ function LoadItemEffectHandler() {
         slotID = selectedRune.attr("value");
     }
     var rune = item.Runes[(slotID - 1)];
-    var effect = GetEffectList(null, null, rune.RuneEffectID)
+    var effect = GetEffectList(null, null, rune.RuneEffectID);
     var boost = IsEffectBoosted(effect, $("#item-select").attr("value"));
 
     var html;
@@ -228,7 +282,7 @@ function LoadItemEffectHandler() {
     html += "<table class='effect-level-list" + (boost ? " effect-boosted" : "") + "'>";
     html += "<tr style='font-style:normal;'><td>Level</td><td>Valeur</td></tr>";
     for (let i = 1; i <= 5; i++) {
-        html += "<tr class='effect-level" + (rune.RuneLevel == i ? " effect-level-selected" : "") + "' value='" + (i + 5) + "'>";
+        html += "<tr class='effect-level" + (rune.RuneLevel == i ? " effect-level-selected" : "") + "' value='" + i + "'>";
         html += "   <td>" + i + "</td>";
         html += "   <td>" + GetEffectValue(effect, i, boost) + "</td>";
         html += "</tr>";
@@ -247,6 +301,7 @@ function LoadItemEffectHandler() {
     }
     html += "</table>";
     html += "</span>";
+    html += "<div style='line-height:40px;font-size: 100%;'>" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost) +"</div>"
 
     $('#available-effects').html(html);
 }
@@ -277,4 +332,37 @@ function LoadItem() {
     }
     
     BuildRuneSlots();
+}
+
+function LoadTotalEffects() {
+
+}
+
+function LoadSublimations() {
+    var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
+    var sublimations = GetSublimationList(item);
+    var html = "<table id='sublimation-list'>";
+    html += "<tr id='table-header'><td style='width:90px;'>Runes</td><td>Nom</td><td style='width:20px;'>Stack</td></tr>";
+    $.each(sublimations, function(i, sublimation) {
+        html += "<tr class='sublimation-line" + (item.SublimationID == sublimation.sublimationID ? " sublimation-selected" : "") + "' value=" + sublimation.sublimationID +">";
+        html += "   <td colspan=3>";
+        //Sublimation Rune Images
+        html += "   <div><div class='image-td' style='float:left;'>";
+        html += "       <div style='background: url(\"./images/" + GetRuneImage(sublimation.runeType1) + "\") no-repeat center;'></div>";
+        html += "       <div style='background: url(\"./images/" + GetRuneImage(sublimation.runeType2) + "\") no-repeat center;'></div>";
+        html += "       <div style='background: url(\"./images/" + GetRuneImage(sublimation.runeType3) + "\") no-repeat center;'></div>";
+        html += "   </div>";
+        //Sublimation Name
+        html += "   <div style='display:inline-block;line-height:28px;'>" + sublimation.name + "</div>";
+        //Sublimation Stack
+        html += "   <div style='display:inline-block;line-height:28px;float:right;width:30px;'>" + sublimation.stack + "</div></div>";
+        //Sublimation Description
+        html += "   <div style='clear:both;width:100%;text-align:left;'>" + sublimation.description + "</div>";
+        html += "   </td'>";
+
+        html += "</tr>";
+    });
+    html += "</table>";
+
+    $('#available-effects').html(html);
 }

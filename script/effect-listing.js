@@ -165,3 +165,83 @@ function CalcLevelValue(step, level){
 function GetEffectRange(effect, boosted){
     return GetEffectValue(effect, 1, boosted) + "-" + GetEffectValue(effect, 10, boosted);
 }
+
+function GetSublimationList(item, sublimationID) {
+    var sublimationList = [];
+    sublimationList.push({runeType1: "1", runeType2: "1", runeType3: "1", sublimationID: 1, stack: 3, name: "Ruine", description: "+10% dommages indirects (dégâts occasionnés par le lanceur en dehors de son tour)"});
+    sublimationList.push({runeType1: "1", runeType2: "1", runeType3: "1", sublimationID: 2, stack: 1, name: "Ruine II", description: "+20% Dommages indirects dans les tours de table pairs"});
+    sublimationList.push({runeType1: "1", runeType2: "1", runeType3: "2", sublimationID: 3, stack: 3, name: "Cicatrisation", description: "10% PV max"});
+    sublimationList.push({runeType1: "1", runeType2: "1", runeType3: "2", sublimationID: 4, stack: 3, name: "Embuscade II", description: "10% Dommages infligés à 2 PO"});
+    sublimationList.push({runeType1: "1", runeType2: "1", runeType3: "3", sublimationID: 5, stack: 3, name: "Carnage", description: "40 Maîtrise Élémentaire si les PV sont > 90%"});
+    sublimationList.push({runeType1: "1", runeType2: "1", runeType3: "3", sublimationID: 6, stack: 3, name: "Dérobade II", description: "3% Parade par tour (max 40)"});
+    sublimationList.push({runeType1: "1", runeType2: "2", runeType3: "1", sublimationID: 7, stack: 1, name: "Fermeté", description: "Après avoir subi une perte de 3 PA : +20 volonté"});
+    sublimationList.push({runeType1: "1", runeType2: "2", runeType3: "1", sublimationID: 8, stack: 3, name: "Fermeté II", description: "Après avoir subi une perte de 2 PA : +10 volonté"});
+    sublimationList.push({runeType1: "1", runeType2: "2", runeType3: "2", sublimationID: 9, stack: 1, name: "Vivacité", description: "1 PA, -75 Résistance Élémentaire"});
+    sublimationList.push({runeType1: "1", runeType2: "2", runeType3: "2", sublimationID: 10, stack: 3, name: "Enveloppe rocheuse", description: "+5% aux Armures données"});
+    sublimationList.push({runeType1: "1", runeType2: "2", runeType3: "3", sublimationID: 11, stack: 1, name: "Dimensionnalité", description: "Commence le combat avec +1 PW max non régénérable"});
+    sublimationList.push({runeType1: "1", runeType2: "2", runeType3: "3", sublimationID: 12, stack: 2, name: "Muraille", description: "Commence le combat avec 300% du niveau en Armure"});
+    sublimationList.push({runeType1: "1", runeType2: "3", runeType3: "1", sublimationID: 13, stack: 1, name: "Solidité", description: "Réduit les dommages directs reçus supérieurs à 20% des PV max, de 500% du niveau"});
+    sublimationList.push({runeType1: "1", runeType2: "3", runeType3: "1", sublimationID: 14, stack: 1, name: "Ténacité II", description: "+60 Résistance Élémentaire pour 2 tours si finit son tour avec 6 PA"});
+    sublimationList.push({runeType1: "1", runeType2: "3", runeType3: "2", sublimationID: 15, stack: 1, name: "Frénésie", description: "-20% Dommages infligés, 10% Dommages infligés par ennemi touché au début du prochain tour"});
+    sublimationList.push({runeType1: "1", runeType2: "3", runeType3: "2", sublimationID: 16, stack: 1, name: "Frénésie II", description: "-15% Dommages infligés, 5% Dommages infligés par entité touchée au début du prochain tour"});
+    sublimationList.push({runeType1: "1", runeType2: "3", runeType3: "3", sublimationID: 17, stack: 3, name: "Critique Berserk", description: "Augmente les Coups Critiques de 10% quand les PV sont en dessous de 50%"});
+    sublimationList.push({runeType1: "1", runeType2: "3", runeType3: "3", sublimationID: 18, stack: 2, name: "Influence II", description: "+2% Coup Critique par tour (max 40)"});
+    sublimationList.push({runeType1: "2", runeType2: "1", runeType3: "1", sublimationID: 19, stack: 3, name: "Sauvegarde", description: "En fin de tour : Transfère un PA non utilisé pour le tour suivant"});
+    sublimationList.push({runeType1: "2", runeType2: "1", runeType3: "1", sublimationID: 20, stack: 3, name: "Longueur", description: "+5% aux dommages en ligne à 2 PO ou plus"});
+    sublimationList.push({runeType1: "2", runeType2: "1", runeType3: "2", sublimationID: 21, stack: 1, name: "Légèreté", description: "Après avoir subi une perte de 3 PM : +20 volonté"});
+    sublimationList.push({runeType1: "2", runeType2: "1", runeType3: "2", sublimationID: 22, stack: 1, name: "Légèreté II", description: "Après avoir subi une perte de 2 PM : +10 volonté"});
+    sublimationList.push({runeType1: "2", runeType2: "1", runeType3: "3", sublimationID: 23, stack: 2, name: "Retour", description: "Regagne 1 PA après avoir tué un ennemi"});
+    sublimationList.push({runeType1: "2", runeType2: "1", runeType3: "3", sublimationID: 24, stack: 2, name: "Retour II", description: "Regagne 1 PM après avoir tué un ennemi"});
+    sublimationList.push({runeType1: "2", runeType2: "2", runeType3: "1", sublimationID: 25, stack: 3, name: "Embuscade", description: "+5% aux Dommages infligés à 1 PO"});
+    sublimationList.push({runeType1: "2", runeType2: "2", runeType3: "1", sublimationID: 26, stack: 3, name: "Epines", description: "Effectuer une Parade donne 2 niveaux de Préparation"});
+    sublimationList.push({runeType1: "2", runeType2: "2", runeType3: "2", sublimationID: 27, stack: 1, name: "Dévastation", description: "+1 PW, -20 Volonté"});
+    sublimationList.push({runeType1: "2", runeType2: "2", runeType3: "2", sublimationID: 28, stack: 3, name: "Tacle Berserk", description: "20% au Tacle quand les PV sont en dessous de 50%"});
+    sublimationList.push({runeType1: "2", runeType2: "2", runeType3: "3", sublimationID: 29, stack: 3, name: "Dérobade", description: "+10% Parade le premier tour de jeu"});
+    sublimationList.push({runeType1: "2", runeType2: "2", runeType3: "3", sublimationID: 30, stack: 3, name: "Esquive Berserk", description: "20% à l'Esquive quand les PV sont en dessous de 50%"});
+    sublimationList.push({runeType1: "2", runeType2: "3", runeType3: "1", sublimationID: 31, stack: 1, name: "Théorie de la matière", description: "-50% Dommages et Soins Réalisés, +100% Coup Critique"});
+    sublimationList.push({runeType1: "2", runeType2: "3", runeType3: "1", sublimationID: 32, stack: 1, name: "Cyclothymie", description: "Tour pair : 20 Volonté, tour impair : -20 Volonté"});
+    sublimationList.push({runeType1: "2", runeType2: "3", runeType3: "2", sublimationID: 33, stack: 1, name: "Topologie", description: "Au début du combat : toute l'esquive est convertie en Armure. L'esquive convertie est perdue."});
+    sublimationList.push({runeType1: "2", runeType2: "3", runeType3: "2", sublimationID: 34, stack: 3, name: "Parade Berserk", description: "Augmente la Parade de 10% quand les PV sont en dessous de 50%"});
+    sublimationList.push({runeType1: "2", runeType2: "3", runeType3: "3", sublimationID: 35, stack: 1, name: "Visibilité", description: "1 PO, -150 Esquive, -150 Tacle"});
+    sublimationList.push({runeType1: "2", runeType2: "3", runeType3: "3", sublimationID: 36, stack: 3, name: "Expert des Coups Critiques", description: "En fin de tour, si un coup critique a été effectué : soigne de 4% des PV manquants"});
+    sublimationList.push({runeType1: "3", runeType2: "1", runeType3: "1", sublimationID: 37, stack: 1, name: "Vélocité", description: "1 PM, -10% Dommages Infligés"});
+    sublimationList.push({runeType1: "3", runeType2: "1", runeType3: "1", sublimationID: 38, stack: 1, name: "Frénésie III", description: "-15% Dommages infligés, 25% Dommages infligés pour le prochain tour si une seule entité est touchée"});
+    sublimationList.push({runeType1: "3", runeType2: "1", runeType3: "2", sublimationID: 39, stack: 3, name: "Endurance", description: "Réduit les malus de caractéristiques reçus de 10%"});
+    sublimationList.push({runeType1: "3", runeType2: "1", runeType3: "2", sublimationID: 40, stack: 3, name: "Endurance II", description: "Augmente les bonus de caractéristiques reçus de 5%"});
+    sublimationList.push({runeType1: "3", runeType2: "1", runeType3: "3", sublimationID: 41, stack: 3, name: "Réprobation", description: "-20 Volonté, réduit de 1 un retrait PA subi par tour"});
+    sublimationList.push({runeType1: "3", runeType2: "1", runeType3: "3", sublimationID: 42, stack: 3, name: "Puits de Vitalité", description: "Augmente l'efficacité des capacités de vol de vie de 10%"});
+    sublimationList.push({runeType1: "3", runeType2: "2", runeType3: "1", sublimationID: 43, stack: 3, name: "Ecailles de lune", description: "5% Armures reçues"});
+    sublimationList.push({runeType1: "3", runeType2: "2", runeType3: "1", sublimationID: 44, stack: 3, name: "Réprobation II", description: "-20 Volonté, réduit de 1 un retrait PM subi par tour"});
+    sublimationList.push({runeType1: "3", runeType2: "2", runeType3: "2", sublimationID: 45, stack: 1, name: "Bonne action", description: "En fin de tour : Transfère un PA non utilisé à l'allié le plus proche"});
+    sublimationList.push({runeType1: "3", runeType2: "2", runeType3: "2", sublimationID: 46, stack: 1, name: "Expert des Parades", description: "-50 Résistance Élémentaire, les Parades réduisent les dommages de 15% supplémentaires"});
+    sublimationList.push({runeType1: "3", runeType2: "2", runeType3: "3", sublimationID: 47, stack: 2, name: "Stupéfaction", description: "10% Coup Critique le premier tour de jeu"});
+    sublimationList.push({runeType1: "3", runeType2: "2", runeType3: "3", sublimationID: 48, stack: 3, name: "Influence", description: "5% Coup Critique"});
+    sublimationList.push({runeType1: "3", runeType2: "3", runeType3: "1", sublimationID: 49, stack: 2, name: "Détermination", description: "-15% Dommages indirects reçus (dégâts reçus en dehors du tour du lanceur des dégâts)"});
+    sublimationList.push({runeType1: "3", runeType2: "3", runeType3: "1", sublimationID: 50, stack: 3, name: "Barrière Distance", description: "Réduit les Dommages Distance reçus de 50% du niveau, 3 fois par tour"});
+    sublimationList.push({runeType1: "3", runeType2: "3", runeType3: "2", sublimationID: 51, stack: 2, name: "Ténacité", description: "+20 Résistance élémentaire pour 1 tour si finit son tour avec 2 PA"});
+    sublimationList.push({runeType1: "3", runeType2: "3", runeType3: "2", sublimationID: 52, stack: 3, name: "Barrière Mêlée", description: "Réduit les Dommages Mêlée reçus de 50% du niveau, 3 fois par tour"});
+    sublimationList.push({runeType1: "3", runeType2: "3", runeType3: "3", sublimationID: 53, stack: 2, name: "Ravage", description: "Toutes les maîtrises et résistances : +10"});
+    sublimationList.push({runeType1: "3", runeType2: "3", runeType3: "3", sublimationID: 54, stack: 3, name: "Ravage II", description: "Coup Critique, Parade, Volonté : +3"});
+
+    if (sublimationID)
+        return sublimationList.find(function(a) {return a.sublimationID == sublimationID});
+
+    if (item.Slots == 4){        
+        sublimationList = sublimationList.filter(function(a) {
+            return ((a.runeType1 == item.Runes[0].RuneType || item.Runes[0].RuneType == 4) && (a.runeType2 == item.Runes[1].RuneType || item.Runes[1].RuneType == 4) && (a.runeType3 == item.Runes[2].RuneType || item.Runes[2].RuneType == 4))
+                || ((a.runeType1 == item.Runes[1].RuneType || item.Runes[1].RuneType == 4) && (a.runeType2 == item.Runes[2].RuneType || item.Runes[2].RuneType == 4) && (a.runeType3 == item.Runes[3].RuneType || item.Runes[3].RuneType == 4))
+        });
+    }
+
+    if (item.Slots == 3){        
+        sublimationList = sublimationList.filter(function(a) {
+            return ((a.runeType1 == item.Runes[0].RuneType || item.Runes[0].RuneType == 4) && (a.runeType2 == item.Runes[1].RuneType || item.Runes[1].RuneType == 4) && (a.runeType3 == item.Runes[2].RuneType || item.Runes[2].RuneType == 4))
+        });
+    }
+
+    if (item.Slots <= 2){
+        return null;
+    }
+
+    return sublimationList;
+}

@@ -118,8 +118,8 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 50px;
-    padding-top: 40px;
+    height: 75px;
+    padding-top: 15px;
 }
 
 #minimize-button, #close-button {
@@ -163,10 +163,7 @@ footer {
 
 #item-selection {
     width: 100%;
-    height: 90px;
-    min-height: 90px;
-    max-height: 90px;
-    border-bottom: 1px solid rgb(77, 77, 77);
+    height: 70px;
 }
 
 #available-effects {
@@ -175,6 +172,15 @@ footer {
     border-top: 1px solid rgb(126, 126, 126);
     font-size: 90%;
     overflow: auto;
+}
+
+#available-sublimation {
+    width: 100%;
+    flex: 1;
+    border-top: 1px solid rgb(126, 126, 126);
+    font-size: 90%;
+    overflow: auto;
+    display: none;
 }
 
 /*************************************************************/
@@ -414,7 +420,66 @@ footer {
     background: url("../images/arme.png") no-repeat center;
 }
 
+/*************************************************************/
 
+#tab-selector {
+    border-bottom: 1px solid rgb(77, 77, 77);
+    display: flex
+}
+
+#tab-selector div {
+    display: inline-block;
+    text-align: center;
+    flex: 1;
+    background-color: rgb(55, 55, 59);
+    /*background-color: rgb(66, 66, 71);*/
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 100%;
+    line-height: 20px;
+}
+#tab-selector div:before {
+    border-left: 10px solid transparent;
+    border-bottom: 20px solid rgb(55, 55, 59);
+    float: left;
+    margin-left: -10px;
+    content: '';
+}
+#tab-selector div:after {
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid rgb(55, 55, 59);
+    float: right;
+    margin-right: -10px;
+    content: '';
+}
+
+#tab-selector div:hover {
+    background-color: rgb(66, 66, 71);
+    cursor: pointer;
+}
+
+#tab-selector div:hover:before {
+    border-bottom: 20px solid rgb(66, 66, 71);
+    cursor: pointer;
+}
+
+#tab-selector div:hover:after {
+    border-bottom: 20px solid rgb(66, 66, 71);
+    cursor: pointer;
+}
+
+.tab-selected {
+    background-color: rgb(86, 86, 92) !important;
+    color: white;
+}
+
+.tab-selected:before {
+    border-bottom: 20px solid rgb(86, 86, 92) !important;
+}
+
+.tab-selected:after {
+    border-bottom: 20px solid rgb(86, 86, 92) !important;
+}
 
 /*************************************************************/
 
@@ -460,6 +525,38 @@ footer {
 
 .effect-level-selected {
     background-color: rgba(134, 134, 134, 0.25);
+    color: white;
+}
+
+#sublimation-list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#sublimation-list tr {
+    height: 28px;
+    text-align: center;
+}
+
+#sublimation-list tr td {
+    vertical-align: middle;
+}
+
+.sublimation-line td {
+    border-bottom: 1px solid rgb(126,126,126);
+    padding-top: 2px;
+    padding-bottom: 5px;
+}
+
+.sublimation-line:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+    cursor: pointer;
+}
+
+.sublimation-selected {
+    background-color: rgba(134, 134, 134, 0.25);
+    color: white;
 }
 
 .image-td div{

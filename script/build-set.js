@@ -10,6 +10,7 @@ var RuneSetup = {
 var ItemRuneSetup = {
     ItemType: 1,
     ItemLevel: 200,
+    SublimationID: 1,
     Slots: 4,
     Runes: []
 };
@@ -27,6 +28,7 @@ function LoadBaseBuild() {
         ItemBuild.Items.push({
             ItemType: Math.pow(2, i),
             ItemLevel: 200,
+            SublimationID: 0, //SublimationID == 0 means nothing selected
             Slots: 4,
             Runes: []
         });
