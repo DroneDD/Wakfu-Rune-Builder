@@ -334,8 +334,9 @@ function LoadItem() {
     BuildRuneSlots();
 }
 
-function LoadTotalEffects() {
-
+function DisplayTotalEffects() {
+    let totalEffects = LoadTotalEffects();
+    console.log(totalEffects);
 }
 
 function LoadSublimations() {

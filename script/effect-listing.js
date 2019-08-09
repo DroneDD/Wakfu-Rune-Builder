@@ -166,6 +166,27 @@ function GetEffectRange(effect, boosted){
     return GetEffectValue(effect, 1, boosted) + "-" + GetEffectValue(effect, 10, boosted);
 }
 
+function LoadTotalEffects(){
+    var totalEffects = [];
+    ItemBuild.Items.forEach(item => {
+        item.Runes.forEach(rune => {
+            if (rune.RuneEffectID != 0){
+                let effect = GetEffectList(null,null,rune.RuneEffectID);
+                let boost = IsEffectBoosted(effect, item.ItemType);
+                let value = GetEffectValue(effect, rune.RuneLevel, boost);
+                var effectTotalValue = totalEffects.filter(function (e){ return e.RuneEffectID == rune.RuneEffectID });
+                if (effectTotalValue.length > 0){
+                    effectTotalValue[0].Total += value;
+                }
+                else{
+                    totalEffects.push({ RuneEffectID: rune.RuneEffectID, Total: value });
+                }
+            }
+        });
+    });
+    return totalEffects;
+}
+
 function GetSublimationList(item, sublimationID) {
     var sublimationList = [];
     sublimationList.push({runeType1: "1", runeType2: "1", runeType3: "1", sublimationID: 1, stack: 3, name: "Ruine", description: "+10% dommages indirects (dégâts occasionnés par le lanceur en dehors de son tour)"});
