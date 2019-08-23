@@ -9,8 +9,8 @@
   <body>
     <header>
       <div class="title-bar">Wakfu Rune Builder</div>
-      <button id="minimize-button"></button>
-      <button id="close-button"></button>
+      <button id="minimize-button" tabindex="-1"></button>
+      <button id="close-button" tabindex="-1"></button>
     </header>
     <main>
       <div id="main-body">
@@ -33,6 +33,7 @@
       require('./renderer.js');
 
       LoadBaseBuild();
+      //LoadSelection();
       $('#item-selection').load('html/item-selection.html');
     </script>
   </body>
