@@ -21,7 +21,7 @@ var ItemBuild = {
     Items: []
 };
 
-function LoadBaseBuild() {
+function LoadBaseBuild(callback) {
     ItemBuild.SetupName = "Default";
 
     for (var i = 0; i < 10; i++) {
@@ -40,4 +40,6 @@ function LoadBaseBuild() {
             });
         }
     }
+
+    callback();
 }

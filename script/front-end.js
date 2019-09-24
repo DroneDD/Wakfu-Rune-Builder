@@ -1,7 +1,4 @@
 $(document).ready(function(){
-
-    LoadItem();
-
     //This function allows the user to change the number of available runes on an item
     $("#item-selection button").click(function(){
         $("#item-selection button").removeClass("btn-selected");
@@ -87,7 +84,7 @@ $(document).ready(function(){
         $(".rune-selected").removeClass("rune-selected");
         $(this).addClass("rune-selected");
 
-        BuildRuneSlots();
+        BuildRuneSlots(false);
     });
 
     //This function allows the user to open the selection menu by double clicking or right clicking a rune
@@ -185,7 +182,7 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //This function builds up to 4 rune slots with the corresponding rune image for the current item
-function BuildRuneSlots(){
+function BuildRuneSlots(realoadSlots = true){
     var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
     var selectedTab = $(".tab-selected").attr("value");
     var selectedRune = $(".rune-selected");
@@ -193,16 +190,18 @@ function BuildRuneSlots(){
     if (selectedRune.length){
         slotID = "#slot-" + selectedRune.attr("value");
     }
-    var html = "";
-    for (let i = 0; i < item.Slots; i++){
-        var rune = item.Runes[i];
-        var effect = GetEffectList(null, null, rune.RuneEffectID);
-        var boost = IsEffectBoosted(effect, $("#item-select").attr("value"));
-        html += "<div class='rune-dropdown'>"
-        html += "<div id='slot-" + (i + 1).toString() + "' class='emplacement " + GetRuneClass(rune.RuneType) + (rune.RuneEffectID != 0 ? "-filled' title='" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost) : "") + "' value='" + (i + 1) + "'>"
-        html += "</div>";
-        html += BuildRuneSelectorHtml((i + 1));
-        html += "</div>";
+    if (realoadSlots){
+        var html = "";
+        for (let i = 0; i < item.Slots; i++){
+            var rune = item.Runes[i];
+            var effect = GetEffectList(null, null, rune.RuneEffectID);
+            var boost = IsEffectBoosted(effect, $("#item-select").attr("value"));
+            html += "<div class='rune-dropdown'>"
+            html += "<div id='slot-" + (i + 1).toString() + "' class='emplacement " + GetRuneClass(rune.RuneType) + (rune.RuneEffectID != 0 ? "-filled' title='" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost) : "") + "' value='" + (i + 1) + "'>"
+            html += "</div>";
+            html += BuildRuneSelectorHtml((i + 1));
+            html += "</div>";
+        }  
     }
     $("#emplacements").html(html);
 
@@ -366,4 +365,13 @@ function LoadSublimations() {
     html += "</table>";
 
     $('#available-effects').html(html);
+}
+
+function LoadSelection() {
+    $('#item-selection').load('html/item-selection.html', function() { LoadItem(); });
+    $('footer').load('html/selection-footer.html');
+}
+
+function LoadTotals() {
+    $('footer').load('html/total-footer.html');
 }

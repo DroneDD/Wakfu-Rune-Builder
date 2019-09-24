@@ -26,8 +26,19 @@ header {
     -webkit-app-region: drag;
 }
 
+main {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 footer {
     background-color: rgb(56, 56, 61);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: -webkit-fill-available;
+    height: 75px;
+    padding: 15px 30px 15px 30px;
 }
 
 /***********************************************************************************/
@@ -92,6 +103,17 @@ button:hover {
     background-color: rgb(116, 116, 124);
 }
 
+#btn-see-totals {
+    width: 100px;
+    vertical-align: middle;
+    float: right;
+}
+
+#btn-see-runes {
+    width: 100px;
+    float: left;
+}
+
 .title-bar {
     /*background: url("../images/weapon icons banner.png") 10px no-repeat;*/
     height: 80px;
@@ -100,26 +122,12 @@ button:hover {
     font-size: 140%;
 }
 
-main {
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
 #main-body {
     position: relative;
     height: 310px;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 75px;
-    padding-top: 15px;
 }
 
 #minimize-button, #close-button {
@@ -156,10 +164,6 @@ footer {
 }
 
 /*************************************************************/
-
-#main-body {
-    display: flex;
-}
 
 #item-selection {
     width: 100%;

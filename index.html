@@ -32,9 +32,7 @@
       // You can also require other files to run in this process
       require('./renderer.js');
 
-      LoadBaseBuild();
-      //LoadSelection();
-      $('#item-selection').load('html/item-selection.html');
+      LoadBaseBuild(LoadSelection);
     </script>
   </body>
 </html>
