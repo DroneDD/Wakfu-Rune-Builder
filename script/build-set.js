@@ -12,17 +12,20 @@ var ItemRuneSetup = {
     ItemLevel: 200,
     SublimationID: 1,
     Slots: 4,
+    SelectedRuneIndex: 0,
     Runes: []
 };
 */
 
 var ItemBuild = {
     SetupName: "",
+    SelectedItemType: 1,
     Items: []
 };
 
 function LoadBaseBuild(callback) {
     ItemBuild.SetupName = "Default";
+    SelectedItemType = 1;
 
     for (var i = 0; i < 10; i++) {
         ItemBuild.Items.push({
@@ -30,6 +33,7 @@ function LoadBaseBuild(callback) {
             ItemLevel: 200,
             SublimationID: 0, //SublimationID == 0 means nothing selected
             Slots: 4,
+            SelectedRuneIndex: 0,
             Runes: []
         });
         for (var i2 = 0; i2 < ItemBuild.Items[i].Slots; i2++) {

@@ -53,6 +53,8 @@ $(document).ready(function(){
 
         $("#item-select").focus();
 
+        ItemBuild.SelectedItemType = itemType;
+
         LoadItem();
     });
 
@@ -182,7 +184,7 @@ $(document).ready(function(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //This function builds up to 4 rune slots with the corresponding rune image for the current item
-function BuildRuneSlots(realoadSlots = true){
+function BuildRuneSlots(reloadSlots = true){
     var item = ItemBuild.Items.find(function(item) {return item.ItemType == $("#item-select").attr("value")});
     var selectedTab = $(".tab-selected").attr("value");
     var selectedRune = $(".rune-selected");
@@ -190,7 +192,7 @@ function BuildRuneSlots(realoadSlots = true){
     if (selectedRune.length){
         slotID = "#slot-" + selectedRune.attr("value");
     }
-    if (realoadSlots){
+    if (reloadSlots){
         var html = "";
         for (let i = 0; i < item.Slots; i++){
             var rune = item.Runes[i];
