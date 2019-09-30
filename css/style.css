@@ -37,7 +37,7 @@ footer {
     bottom: 0;
     left: 0;
     width: -webkit-fill-available;
-    height: 75px;
+    height: 35px;
     padding: 15px 30px 15px 30px;
 }
 
@@ -105,6 +105,7 @@ button:hover {
 
 #btn-see-totals {
     width: 100px;
+    height: 100%;
     vertical-align: middle;
     float: right;
 }
@@ -124,7 +125,7 @@ button:hover {
 
 #main-body {
     position: relative;
-    height: 310px;
+    height: 335px;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
