@@ -1,0 +1,609 @@
+html {
+    background-color: rgb(38, 38, 41);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    color: rgb(199, 199, 199);
+    font-family: "Verdana", "Geneva", sans-serif;
+}
+
+header {
+    background-color: rgb(75, 75, 83);
+    color: white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    -webkit-app-region: drag;
+}
+
+main {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+footer {
+    background-color: rgb(56, 56, 61);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: -webkit-fill-available;
+    height: 35px;
+    padding: 15px 30px 15px 30px;
+}
+
+/***********************************************************************************/
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(78, 78, 82); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(108, 108, 112); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(152, 152, 155);  
+  }
+
+input[type=number] {
+    background-color: rgb(66, 66, 71);
+    outline: none;
+    color: white;
+    border: 1px solid rgb(92, 92, 100);
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button {
+    -webkit-app-region: no-drag;
+    background-color: rgb(66, 66, 71);
+    outline: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgb(92, 92, 100);
+    margin: 1px;
+}
+
+button:hover {
+    background-color: rgb(86, 86, 92);
+    cursor: pointer;
+}
+
+.btn-selected {
+    background-color: rgb(98, 98, 105);
+    border-color: white;
+}
+
+.btn-selected:hover {
+    background-color: rgb(116, 116, 124);
+}
+
+#btn-see-totals {
+    width: 100px;
+    height: 100%;
+    vertical-align: middle;
+    float: right;
+}
+
+#btn-see-runes {
+    width: 100px;
+    float: left;
+}
+
+#btn-remove-rune {
+    width: 110px;
+    float: right;
+}
+
+.title-bar {
+    /*background: url("../images/weapon icons banner.png") 10px no-repeat;*/
+    height: 80px;
+    line-height: 80px;
+    padding-left: 10px;
+    font-size: 140%;
+}
+
+#main-body {
+    position: relative;
+    height: 335px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#minimize-button, #close-button {
+    outline: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+}
+
+#minimize-button:hover, #close-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#minimize-button {
+    background: url('../images/minimize.png');
+    top: 0;
+    right: 30px;
+}
+
+#close-button {
+    background: url('../images/close.png');
+    top: 0;
+    right: 0;
+}
+
+#dropdown-arrow {
+    background: url('../images/drop.png') no-repeat center;
+    float: right;
+    width: 18px !important;
+    margin-right: 4px;
+}
+
+/*************************************************************/
+
+#available-effects {
+    width: 100%;
+    flex: 1;
+    border-top: 1px solid rgb(126, 126, 126);
+    font-size: 90%;
+    overflow: auto;
+}
+
+#available-sublimation {
+    width: 100%;
+    flex: 1;
+    border-top: 1px solid rgb(126, 126, 126);
+    font-size: 90%;
+    overflow: auto;
+    display: none;
+}
+
+/*************************************************************/
+
+#item-selection-detail {
+    vertical-align: top;
+}
+
+#item-dropdown {
+    display: inline-block;
+    vertical-align: top; 
+    width: 142px;
+    height: 30px;
+    position: relative;
+    background-color: rgb(66, 66, 71);
+    border: 1px solid rgb(92, 92, 100);
+    color: white;
+    line-height: 22px;
+}
+
+#item-dropdown:hover {
+    cursor: pointer;
+    background-color: rgb(106, 106, 112);
+}
+
+#item-dropdown:focus {
+    background-color: rgb(82, 82, 87);
+}
+
+#item-select div {
+    display: inline-block;
+    height: 30px;
+    width: 26px;
+    margin-left: 3px;
+    background-position: left !important;
+    vertical-align: top;
+}
+
+#item-select p {
+    margin-left: 3px;
+    line-height: 30px;
+}
+
+#item-dropdown-content {
+    display: none;
+    width: 142px;
+    margin-left: -1px;
+    background-color: rgb(66, 66, 71);
+    border: 1px solid rgb(92, 92, 100);
+    position: absolute;
+    z-index: 1;
+}
+
+#item-dropdown-content div div {
+    display: inline-block;
+    height: 25px;
+    width: 26px;
+    margin-left: 3px;
+    background-position: left !important;
+    vertical-align: top;
+}
+
+#item-dropdown-content div p {
+    display: inline-block;
+    line-height: 25px;
+    margin-left: 3px;
+}
+
+#item-dropdown-content div:hover {
+    cursor: pointer;
+    background-color: rgb(106, 106, 112);
+}
+
+#emplacements {
+    display: inline-block;
+}
+
+.rune-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.emplacement {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin-right: 1px;
+    margin-left: 1px;
+    background-color: rgb(66, 66, 71);
+    border: 1px solid rgb(92, 92, 100);
+    outline: none;
+    color: white;
+    text-align: center;
+}
+
+.emplacement:hover {
+    background-color: rgb(86, 86, 92);
+    cursor: pointer;
+}
+
+.selection {
+    position: absolute;
+    display: none;
+    background-color: rgb(38, 38, 41);
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid rgb(92, 92, 100);
+    border-top: none;
+    margin-left: 1px;
+    margin-right: 1px;
+    z-index: 1;
+    top: 30px;
+}
+
+.selection div {
+    height: 30px;
+    width: 30px;
+    text-align: center;
+}
+
+.red-rune {
+    background: url('../images/red_rune.png') no-repeat center;
+    background-color: rgba(170, 58, 58, 0.5);
+}
+
+.blue-rune {
+    background: url('../images/blue_rune.png') no-repeat center;
+    background-color: rgba(102, 102, 170, 0.5);
+}
+
+.green-rune {
+    background: url('../images/green_rune.png') no-repeat center;
+    background-color: rgba(80, 173, 80, 0.5);
+}
+
+.white-rune {
+    background: url('../images/white_rune.png') no-repeat center;
+    background-color: rgba(221, 224, 194, 0.5);
+}
+
+.red-rune-filled {
+    background: url('../images/red_rune_filled.png') no-repeat center;
+    background-color: rgba(170, 58, 58, 0.5);
+}
+
+.blue-rune-filled {
+    background: url('../images/blue_rune_filled.png') no-repeat center;
+    background-color: rgba(102, 102, 170, 0.5);
+}
+
+.green-rune-filled {
+    background: url('../images/green_rune_filled.png') no-repeat center;
+    background-color: rgba(80, 173, 80, 0.5);
+}
+
+.white-rune-filled {
+    background: url('../images/white_rune_filled.png') no-repeat center;
+    background-color: rgba(221, 224, 194, 0.5);
+}
+
+.red-rune:hover {
+    background-color: rgba(170, 58, 58, 0.7);
+    cursor: pointer;
+}
+
+.blue-rune:hover {
+    background-color: rgba(102, 102, 170, 0.7);
+    cursor: pointer;
+}
+
+.green-rune:hover {
+    background-color: rgba(80, 173, 80, 0.7);
+    cursor: pointer;
+}
+
+.white-rune:hover {
+    background-color: rgba(221, 224, 194, 0.7);
+    cursor: pointer;
+}
+
+.red-rune-filled:hover {
+    background-color: rgba(170, 58, 58, 0.7);
+    cursor: pointer;
+}
+
+.blue-rune-filled:hover {
+    background-color: rgba(102, 102, 170, 0.7);
+    cursor: pointer;
+}
+
+.green-rune-filled:hover {
+    background-color: rgba(80, 173, 80, 0.7);
+    cursor: pointer;
+}
+
+.white-rune-filled:hover {
+    background-color: rgba(221, 224, 194, 0.7);
+    cursor: pointer;
+}
+
+.rune-selected {
+    border: 1px solid rgb(202, 202, 202);
+}
+
+.casque {
+    background: url("../images/casque.png") no-repeat center;
+}
+
+.cape {
+    background: url("../images/cape.png") no-repeat center;
+}
+
+.amulette {
+    background: url("../images/amulette.png") no-repeat center;
+}
+
+.epaulettes {
+    background: url("../images/epaulettes.png") no-repeat center;
+}
+
+.plastron {
+    background: url("../images/plastron.png") no-repeat center;
+}
+
+.ceinture {
+    background: url("../images/ceinture.png") no-repeat center;
+}
+
+.anneau {
+    background: url("../images/anneau.png") no-repeat center;
+}
+
+.bottes {
+    background: url("../images/bottes.png") no-repeat center;
+}
+
+.arme {
+    background: url("../images/arme.png") no-repeat center;
+}
+
+/*************************************************************/
+
+#tab-selector {
+    border-bottom: 1px solid rgb(77, 77, 77);
+    display: flex
+}
+
+#tab-selector div {
+    display: inline-block;
+    text-align: center;
+    flex: 1;
+    background-color: rgb(55, 55, 59);
+    /*background-color: rgb(66, 66, 71);*/
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 100%;
+    line-height: 20px;
+}
+#tab-selector div:before {
+    border-left: 10px solid transparent;
+    border-bottom: 20px solid rgb(55, 55, 59);
+    float: left;
+    margin-left: -10px;
+    content: '';
+}
+#tab-selector div:after {
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid rgb(55, 55, 59);
+    float: right;
+    margin-right: -10px;
+    content: '';
+}
+
+#tab-selector div:hover {
+    background-color: rgb(66, 66, 71);
+    cursor: pointer;
+}
+
+#tab-selector div:hover:before {
+    border-bottom: 20px solid rgb(66, 66, 71);
+    cursor: pointer;
+}
+
+#tab-selector div:hover:after {
+    border-bottom: 20px solid rgb(66, 66, 71);
+    cursor: pointer;
+}
+
+.tab-selected {
+    background-color: rgb(86, 86, 92) !important;
+    color: white;
+}
+
+.tab-selected:before {
+    border-bottom: 20px solid rgb(86, 86, 92) !important;
+}
+
+.tab-selected:after {
+    border-bottom: 20px solid rgb(86, 86, 92) !important;
+}
+
+/*************************************************************/
+
+#effect-list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#effect-list tr {
+    height: 28px;
+    text-align: center;
+}
+
+#effect-list tr td {
+    vertical-align: middle;
+}
+
+.effect-line:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+    cursor: pointer;
+}
+
+.effect-level-list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.effect-level-list tr {
+    height: 28px;
+    text-align: center;
+}
+
+.effect-level-list tr td {
+    vertical-align: middle;
+}
+
+.effect-level:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+    cursor: pointer;
+}
+
+.effect-level-selected {
+    background-color: rgba(134, 134, 134, 0.25);
+    color: white;
+}
+
+#sublimation-list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#sublimation-list tr {
+    height: 28px;
+    text-align: center;
+}
+
+#sublimation-list tr td {
+    vertical-align: middle;
+}
+
+.sublimation-line td {
+    border-bottom: 1px solid rgb(126,126,126);
+    padding-top: 2px;
+    padding-bottom: 5px;
+}
+
+.sublimation-line:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+    cursor: pointer;
+}
+
+.sublimation-selected {
+    background-color: rgba(134, 134, 134, 0.25);
+    color: white;
+}
+
+.image-td div{
+    display: inline-block;
+    height: 28px;
+    width: 26px;
+}
+
+.effect-boosted {
+    font-style: italic;
+    color: rgb(217, 226, 255)
+}
+
+/*******************************TOTAL EFFECTS********************************/
+
+#total-rows {
+    margin-top: 15px;
+    width: 100%;
+    overflow: auto;
+}
+
+#total-rows table {
+    width: 100%;
+}
+
+#total-rows tr {
+    height: 28px;
+}
+
+#total-rows td {
+    vertical-align: middle;
+}
+
+.total-rows-line:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+}
+
+.td-total-header {
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+.td-total-value {
+    text-align: center;
+}

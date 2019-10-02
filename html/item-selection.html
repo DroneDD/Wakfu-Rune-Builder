@@ -1,0 +1,36 @@
+<table>
+    <tr>
+        <td style="width: 150px;"><p>Emplacements:</p></td>
+        <td id="item-selection">
+            <button id="btn-1" value=1 tabindex="-1">1</button><button id="btn-2" value=2 tabindex="-1">2</button><button id="btn-3" value=3 tabindex="-1">3</button><button id="btn-4" value=4 tabindex="-1">4</button>
+        </td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top;">
+            <div id="item-selection-detail">
+                <div id="item-dropdown">
+                    <div id="item-select" tabindex="0" value=1><div class="casque"></div><p style="display: inline-block">Casque</p><span></span><div id="dropdown-arrow"></div></div>
+                    <div id="item-dropdown-content">
+                        <div id="casque" value=1><div class="casque"></div><p>Casque</p></div>
+                        <div id="cape" value=2><div class="cape"></div><p>Cape</p></div>
+                        <div id="amulette" value=4><div class="amulette"></div><p>Amulette</p></div>
+                        <div id="epaulettes" value=8><div class="epaulettes"></div><p>Épaulettes</p></div>
+                        <div id="plastron" value=16><div class="plastron"></div><p>Plastron</p></div>
+                        <div id="ceinture" value=32><div class="ceinture"></div><p>Ceinture</p></div>
+                        <div id="anneau" value=64><div class="anneau"></div><p>Anneau 1</p></div>
+                        <div id="anneau" value=128><div class="anneau"></div><p>Anneau 2</p></div>
+                        <div id="bottes" value=256><div class="bottes"></div><p>Bottes</p></div>
+                        <div id="arme" value=512><div class="arme"></div><p>Arme</p></div>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td><div id="emplacements"></div></td>
+    </tr>
+</table>
+<div id="tab-selector">
+    <div id="effect-tab" class="tab-selected" value="1">Effets</div>
+    <div id="sublimation-tab" value="2">Sublimations</div>
+</div>
+<div id="available-effects"></div>
+<div id="available-sublimation"></div>
