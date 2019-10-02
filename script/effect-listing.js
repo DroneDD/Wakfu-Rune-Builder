@@ -179,11 +179,20 @@ function LoadTotalEffects(){
                     effectTotalValue[0].Total += value;
                 }
                 else{
-                    totalEffects.push({ RuneEffectID: rune.RuneEffectID, Total: value });
+                    totalEffects.push({ RuneEffectID: rune.RuneEffectID, Description: effect.description, Total: value });
                 }
             }
         });
     });
+
+    totalEffects.sort(function(a,b){
+        var x = a.RuneEffectID;
+        var y = b.RuneEffectID;
+        if (x < y) {return -1;}
+        if (x > y) {return 1;}
+        return 0;
+    });
+
     return totalEffects;
 }
 

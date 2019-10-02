@@ -1,6 +1,6 @@
 $(document).ready(function(){
     //This function allows the user to change the number of available runes on an item
-    $("#item-selection button").click(function(){
+    $("body").on("click", "#item-selection button", function(){
         $("#item-selection button").removeClass("btn-selected");
         $(this).addClass("btn-selected");
         var html = "";
@@ -65,7 +65,7 @@ $(document).ready(function(){
     });
 
     //This function allows the user to quickly change the selected item by pressing up and down on their keyboard
-    $("#item-select").on("keydown", function(e){
+    $("body").on("keydown", "#item-select", function(e){
         if (e.keyCode == 38 || e.keyCode == 40) {
             $('#item-dropdown-content').hide();
             var itemType = $(this).attr("value");
@@ -81,6 +81,8 @@ $(document).ready(function(){
             $("#item-select div").removeClass();
             $("#item-select div").addClass(GetBoostImages(itemType));
             $("#item-select p").text(GetItemTypeName(itemType));
+
+            ItemBuild.SelectedItemType = itemType;
 
             LoadItem();
         }
@@ -288,7 +290,7 @@ function LoadItemEffectHandler() {
     var html;
     html = "<span style='width:50%;display:inline-block;'>";
     html += "<table class='effect-level-list" + (boost ? " effect-boosted" : "") + "'>";
-    html += "<tr style='font-style:normal;'><td>Level</td><td>Valeur</td></tr>";
+    html += "<tr style='font-style:normal;color:rgb(199, 199, 199);'><td>Niveau</td><td>Valeur</td></tr>";
     for (let i = 1; i <= 5; i++) {
         html += "<tr class='effect-level" + (rune.RuneLevel == i ? " effect-level-selected" : "") + "' value='" + i + "'>";
         html += "   <td>" + i + "</td>";
@@ -300,7 +302,7 @@ function LoadItemEffectHandler() {
     html += "</span><span style='width:50%;display:inline-block;'>";
 
     html += "<table class='effect-level-list" + (boost ? " effect-boosted" : "") + "'>";
-    html += "<tr style='font-style:normal;'><td>Level</td><td>Valeur</td></tr>";
+    html += "<tr style='font-style:normal;color:rgb(199, 199, 199);'><td>Niveau</td><td>Valeur</td></tr>";
     for (let i = 1; i <= 5; i++) {
         html += "<tr class='effect-level" + (rune.RuneLevel == (i + 5) ? " effect-level-selected" : "") + "' value='" + (i + 5) + "'>";
         html += "   <td>" + (i + 5) + "</td>";
@@ -310,7 +312,7 @@ function LoadItemEffectHandler() {
     html += "</table>";
     html += "</span>";
     html += "<div style='line-height:35px;font-size: 100%;'>" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost)
-    html += "<button id='btn-remove-rune' style='width:110px;float:right;'>Enlever la rune</button>"
+    html += "<button id='btn-remove-rune'> Enlever la rune</button>"
     html += "</div>"
     $('#available-effects').html(html);
 }
@@ -325,6 +327,11 @@ function LoadBuild() {
 function LoadItem() {
     var item = ItemBuild.Items.find(function(item) {return item.ItemType == ItemBuild.SelectedItemType});
     var slots = item.Slots;
+
+    $("#item-select").attr("value", function() {return ItemBuild.SelectedItemType;});
+    $("#item-select div").removeClass();
+    $("#item-select div").addClass(GetBoostImages(ItemBuild.SelectedItemType));
+    $("#item-select p").text(GetItemTypeName(ItemBuild.SelectedItemType));
 
     $("#item-selection button").removeClass("btn-selected");
     if (slots == 1) {
@@ -377,11 +384,33 @@ function LoadSublimations() {
     $('#available-effects').html(html);
 }
 
+function LoadTotalRows(){
+    var html = "";
+    var totalEffects = LoadTotalEffects();
+
+    html += "<table id='tbl-total' style='margin-top: 15px;'>";
+    html += "   <tr>";
+    html += "       <td class='td-total-header'>Description</td>";
+    html += "       <td class='td-total-header td-total-value' style='width:60px;'>Total</td>";
+    html += "   </tr>";
+
+    $.each(totalEffects, function(i, effect){
+        html += "<tr class='total-rows-line'>";
+        html += "   <td>" + effect.Description + "</td>";
+        html += "   <td class='td-total-value'>" + effect.Total + "</td>";
+        html += "</tr>";
+    });
+    html += "</table>";
+
+    $('#total-rows').html(html);
+}
+
 function LoadSelection() {
-    $('#item-selection').load('html/item-selection.html', function() { LoadItem(); });
+    $('#main-body').load('html/item-selection.html', function() { LoadItem(); });
     $('footer').load('html/selection-footer.html');
 }
 
 function LoadTotals() {
+    $('#main-body').load('html/total-effects.html', function() { LoadTotalRows(); });
     $('footer').load('html/total-footer.html');
 }

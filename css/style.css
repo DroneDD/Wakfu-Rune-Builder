@@ -115,6 +115,11 @@ button:hover {
     float: left;
 }
 
+#btn-remove-rune {
+    width: 110px;
+    float: right;
+}
+
 .title-bar {
     /*background: url("../images/weapon icons banner.png") 10px no-repeat;*/
     height: 80px;
@@ -165,11 +170,6 @@ button:hover {
 }
 
 /*************************************************************/
-
-#item-selection {
-    width: 100%;
-    height: 70px;
-}
 
 #available-effects {
     width: 100%;
@@ -572,4 +572,38 @@ button:hover {
 
 .effect-boosted {
     font-style: italic;
+    color: rgb(217, 226, 255)
+}
+
+/*******************************TOTAL EFFECTS********************************/
+
+#total-rows {
+    margin-top: 15px;
+    width: 100%;
+    overflow: auto;
+}
+
+#total-rows table {
+    width: 100%;
+}
+
+#total-rows tr {
+    height: 28px;
+}
+
+#total-rows td {
+    vertical-align: middle;
+}
+
+.total-rows-line:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+}
+
+.td-total-header {
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+.td-total-value {
+    text-align: center;
 }
