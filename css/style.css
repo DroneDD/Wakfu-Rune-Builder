@@ -26,8 +26,19 @@ header {
     -webkit-app-region: drag;
 }
 
+main {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 footer {
     background-color: rgb(56, 56, 61);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: -webkit-fill-available;
+    height: 35px;
+    padding: 15px 30px 15px 30px;
 }
 
 /***********************************************************************************/
@@ -92,6 +103,23 @@ button:hover {
     background-color: rgb(116, 116, 124);
 }
 
+#btn-see-totals {
+    width: 100px;
+    height: 100%;
+    vertical-align: middle;
+    float: right;
+}
+
+#btn-see-runes {
+    width: 100px;
+    float: left;
+}
+
+#btn-remove-rune {
+    width: 110px;
+    float: right;
+}
+
 .title-bar {
     /*background: url("../images/weapon icons banner.png") 10px no-repeat;*/
     height: 80px;
@@ -100,26 +128,12 @@ button:hover {
     font-size: 140%;
 }
 
-main {
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
 #main-body {
     position: relative;
-    height: 310px;
+    height: 335px;
     padding-top: 20px;
     display: flex;
     flex-direction: column;
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    padding-top: 40px;
 }
 
 #minimize-button, #close-button {
@@ -157,24 +171,21 @@ footer {
 
 /*************************************************************/
 
-#main-body {
-    display: flex;
-}
-
-#item-selection {
-    width: 100%;
-    height: 90px;
-    min-height: 90px;
-    max-height: 90px;
-    border-bottom: 1px solid rgb(77, 77, 77);
-}
-
 #available-effects {
     width: 100%;
     flex: 1;
     border-top: 1px solid rgb(126, 126, 126);
     font-size: 90%;
     overflow: auto;
+}
+
+#available-sublimation {
+    width: 100%;
+    flex: 1;
+    border-top: 1px solid rgb(126, 126, 126);
+    font-size: 90%;
+    overflow: auto;
+    display: none;
 }
 
 /*************************************************************/
@@ -314,6 +325,26 @@ footer {
     background-color: rgba(221, 224, 194, 0.5);
 }
 
+.red-rune-filled {
+    background: url('../images/red_rune_filled.png') no-repeat center;
+    background-color: rgba(170, 58, 58, 0.5);
+}
+
+.blue-rune-filled {
+    background: url('../images/blue_rune_filled.png') no-repeat center;
+    background-color: rgba(102, 102, 170, 0.5);
+}
+
+.green-rune-filled {
+    background: url('../images/green_rune_filled.png') no-repeat center;
+    background-color: rgba(80, 173, 80, 0.5);
+}
+
+.white-rune-filled {
+    background: url('../images/white_rune_filled.png') no-repeat center;
+    background-color: rgba(221, 224, 194, 0.5);
+}
+
 .red-rune:hover {
     background-color: rgba(170, 58, 58, 0.7);
     cursor: pointer;
@@ -330,6 +361,26 @@ footer {
 }
 
 .white-rune:hover {
+    background-color: rgba(221, 224, 194, 0.7);
+    cursor: pointer;
+}
+
+.red-rune-filled:hover {
+    background-color: rgba(170, 58, 58, 0.7);
+    cursor: pointer;
+}
+
+.blue-rune-filled:hover {
+    background-color: rgba(102, 102, 170, 0.7);
+    cursor: pointer;
+}
+
+.green-rune-filled:hover {
+    background-color: rgba(80, 173, 80, 0.7);
+    cursor: pointer;
+}
+
+.white-rune-filled:hover {
     background-color: rgba(221, 224, 194, 0.7);
     cursor: pointer;
 }
@@ -374,7 +425,66 @@ footer {
     background: url("../images/arme.png") no-repeat center;
 }
 
+/*************************************************************/
 
+#tab-selector {
+    border-bottom: 1px solid rgb(77, 77, 77);
+    display: flex
+}
+
+#tab-selector div {
+    display: inline-block;
+    text-align: center;
+    flex: 1;
+    background-color: rgb(55, 55, 59);
+    /*background-color: rgb(66, 66, 71);*/
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 100%;
+    line-height: 20px;
+}
+#tab-selector div:before {
+    border-left: 10px solid transparent;
+    border-bottom: 20px solid rgb(55, 55, 59);
+    float: left;
+    margin-left: -10px;
+    content: '';
+}
+#tab-selector div:after {
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid rgb(55, 55, 59);
+    float: right;
+    margin-right: -10px;
+    content: '';
+}
+
+#tab-selector div:hover {
+    background-color: rgb(66, 66, 71);
+    cursor: pointer;
+}
+
+#tab-selector div:hover:before {
+    border-bottom: 20px solid rgb(66, 66, 71);
+    cursor: pointer;
+}
+
+#tab-selector div:hover:after {
+    border-bottom: 20px solid rgb(66, 66, 71);
+    cursor: pointer;
+}
+
+.tab-selected {
+    background-color: rgb(86, 86, 92) !important;
+    color: white;
+}
+
+.tab-selected:before {
+    border-bottom: 20px solid rgb(86, 86, 92) !important;
+}
+
+.tab-selected:after {
+    border-bottom: 20px solid rgb(86, 86, 92) !important;
+}
 
 /*************************************************************/
 
@@ -382,9 +492,6 @@ footer {
     border-collapse: collapse;
     width: 100%;
 }
-
-/* #table-header {
-} */
 
 #effect-list tr {
     height: 28px;
@@ -401,6 +508,62 @@ footer {
     cursor: pointer;
 }
 
+.effect-level-list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.effect-level-list tr {
+    height: 28px;
+    text-align: center;
+}
+
+.effect-level-list tr td {
+    vertical-align: middle;
+}
+
+.effect-level:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+    cursor: pointer;
+}
+
+.effect-level-selected {
+    background-color: rgba(134, 134, 134, 0.25);
+    color: white;
+}
+
+#sublimation-list {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#sublimation-list tr {
+    height: 28px;
+    text-align: center;
+}
+
+#sublimation-list tr td {
+    vertical-align: middle;
+}
+
+.sublimation-line td {
+    border-bottom: 1px solid rgb(126,126,126);
+    padding-top: 2px;
+    padding-bottom: 5px;
+}
+
+.sublimation-line:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+    cursor: pointer;
+}
+
+.sublimation-selected {
+    background-color: rgba(134, 134, 134, 0.25);
+    color: white;
+}
+
 .image-td div{
     display: inline-block;
     height: 28px;
@@ -409,4 +572,38 @@ footer {
 
 .effect-boosted {
     font-style: italic;
+    color: rgb(217, 226, 255)
+}
+
+/*******************************TOTAL EFFECTS********************************/
+
+#total-rows {
+    margin-top: 15px;
+    width: 100%;
+    overflow: auto;
+}
+
+#total-rows table {
+    width: 100%;
+}
+
+#total-rows tr {
+    height: 28px;
+}
+
+#total-rows td {
+    vertical-align: middle;
+}
+
+.total-rows-line:hover {
+    background-color: rgba(202, 202, 202, 0.25);
+    color: white;
+}
+
+.td-total-header {
+    border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+.td-total-value {
+    text-align: center;
 }

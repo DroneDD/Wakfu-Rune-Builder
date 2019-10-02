@@ -9,13 +9,11 @@
   <body>
     <header>
       <div class="title-bar">Wakfu Rune Builder</div>
-      <button id="minimize-button"></button>
-      <button id="close-button"></button>
+      <button id="minimize-button" tabindex="-1"></button>
+      <button id="close-button" tabindex="-1"></button>
     </header>
     <main>
       <div id="main-body">
-        <div id="item-selection"></div>
-        <div id="available-effects"></div>
     </div>
     </main>
     <footer></footer>
@@ -27,8 +25,7 @@
       // You can also require other files to run in this process
       require('./renderer.js');
 
-      LoadBaseBuild();
-      $('#item-selection').load('html/item-selection.html');
+      LoadBaseBuild(LoadSelection);
     </script>
   </body>
 </html>

@@ -12,19 +12,28 @@
   },
   "keywords": [
     "wakfu",
-    "runes",
-    "builder"
+    "rune",
+    "builder",
+    "calculator"
   ],
   "author": "DroneDD",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^5.0.1"
+    "electron": "^5.0.9"
   },
   "dependencies": {
+    "electron-builder": "^21.2.0",
     "jquery": "^3.4.1"
   },
   "bugs": {
     "url": "https://github.com/electron/electron-quick-start/issues"
   },
-  "homepage": "https://github.com/electron/electron-quick-start#readme"
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "build": {
+    "appId": "com.example.app",
+    "productName": "Wakfu-Rune-Builder",
+    "win": {
+      
+    }
+  }
 }
