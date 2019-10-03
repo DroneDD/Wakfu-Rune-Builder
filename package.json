@@ -37,6 +37,9 @@
     "mac": {
       "icon": "C:\\Users\\FTurner\\Documents\\Dev\\Stuff fred\\Wakfu-Rune-Builder\\images\\white_rune.ico",
       "category": "public.app-category.developer-tools"
-    }
+    },
+    "extraFiles": [
+      "Builds"
+    ]
   }
 }
