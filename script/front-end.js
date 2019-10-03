@@ -317,12 +317,6 @@ function LoadItemEffectHandler() {
     $('#available-effects').html(html);
 }
 
-//This function changes the ItemBuild object 
-function LoadBuild() {
-    //THIS IS CURRENTLY UNUSED
-    LoadItem();
-}
-
 //This function populates and prefills the form with the current Build Item
 function LoadItem() {
     var item = ItemBuild.Items.find(function(item) {return item.ItemType == ItemBuild.SelectedItemType});

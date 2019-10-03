@@ -103,15 +103,20 @@ button:hover {
     background-color: rgb(116, 116, 124);
 }
 
-#btn-see-totals {
-    width: 100px;
+#footer-div {
     height: 100%;
-    vertical-align: middle;
+}
+
+#footer-div button {
+    height: 100%;
+    width: 100px;
+}
+
+#btn-see-totals {
     float: right;
 }
 
 #btn-see-runes {
-    width: 100px;
     float: left;
 }
 
