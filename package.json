@@ -18,8 +18,8 @@
   "author": "DroneDD",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron-builder": "^21.2.0",
-    "electron": "^5.0.9"
+    "electron": "^5.0.9",
+    "electron-builder": "^21.2.0"
   },
   "dependencies": {
     "jquery": "^3.4.1"
