@@ -47,3 +47,42 @@ function LoadBaseBuild(callback) {
 
     callback();
 }
+
+function SaveBuild(){
+    let fs = require("fs-extra");
+    let remote = require('electron').remote;
+    let app = remote.app;
+    let dialog = remote.dialog;
+    let options = {
+        title: "Sauvegarder votre build",
+        defaultPath: app.getPath('userData') + "\\Builds\\DefaultBuild.wrb",
+        filters: [{name: "Fichiers Wakfu-Rune-Builder", extensions: ["wrb"]}]
+    };
+    fs.ensureDirSync(app.getPath('userData') + "\\Builds\\");
+    let path = dialog.showSaveDialog(options);
+    if (path){
+        if (!path.toLowerCase().endsWith(".wrb")){
+            path += ".wrb";
+        }
+        ItemBuild.SetupName = path.substr(0, path.length - 4);
+        fs.writeFileSync(path, JSON.stringify(ItemBuild));
+    }
+}
+
+function LoadBuild(){
+    let fs = require("fs-extra");
+    let remote = require('electron').remote;
+    let app = remote.app;
+    let dialog = remote.dialog;
+    let options = {
+        title: "Sélectionner un build",
+        defaultPath: app.getPath('userData') + "\\Builds\\DefaultBuild.wrb",
+        filters: [{name: "Fichiers Wakfu-Rune-Builder", extensions: ["wrb"]}]
+    };
+    fs.ensureDirSync(app.getPath('userData') + "\\Builds\\");
+    let path = dialog.showOpenDialog(options);
+    if (path && path[0]){
+        ItemBuild = JSON.parse(fs.readFileSync(path[0]));
+        LoadItem();
+    }
+}
