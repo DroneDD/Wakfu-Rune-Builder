@@ -49,14 +49,16 @@ function LoadBaseBuild(callback) {
 }
 
 function SaveBuild(){
-    let fs = require("fs");
-    let app = require('electron').remote;
-    let dialog = app.dialog;
+    let fs = require("fs-extra");
+    let remote = require('electron').remote;
+    let app = remote.app;
+    let dialog = remote.dialog;
     let options = {
         title: "Sauvegarder votre build",
-        defaultPath: app.app.getAppPath() + "\\Builds\\DefaultBuild.wrb",
+        defaultPath: app.getPath('userData') + "\\Builds\\DefaultBuild.wrb",
         filters: [{name: "Fichiers Wakfu-Rune-Builder", extensions: ["wrb"]}]
     };
+    fs.ensureDirSync(app.getPath('userData') + "\\Builds\\");
     let path = dialog.showSaveDialog(options);
     if (path){
         if (!path.toLowerCase().endsWith(".wrb")){
@@ -68,16 +70,18 @@ function SaveBuild(){
 }
 
 function LoadBuild(){
-    let fs = require("fs");
-    let app = require('electron').remote;
-    let dialog = app.dialog;
+    let fs = require("fs-extra");
+    let remote = require('electron').remote;
+    let app = remote.app;
+    let dialog = remote.dialog;
     let options = {
         title: "Sélectionner un build",
-        defaultPath: app.app.getAppPath() + "\\Builds\\DefaultBuild.wrb",
+        defaultPath: app.getPath('userData') + "\\Builds\\DefaultBuild.wrb",
         filters: [{name: "Fichiers Wakfu-Rune-Builder", extensions: ["wrb"]}]
     };
+    fs.ensureDirSync(app.getPath('userData') + "\\Builds\\");
     let path = dialog.showOpenDialog(options);
-    if (path[0]){
+    if (path && path[0]){
         ItemBuild = JSON.parse(fs.readFileSync(path[0]));
         LoadItem();
     }
