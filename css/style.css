@@ -195,10 +195,6 @@ button:hover {
 
 /*************************************************************/
 
-#item-selection-detail {
-    vertical-align: top;
-}
-
 #item-dropdown {
     display: inline-block;
     vertical-align: top; 
@@ -211,12 +207,31 @@ button:hover {
     line-height: 22px;
 }
 
+#level-dropdown {
+    height: 30px;
+    position: relative;
+    background-color: rgb(66, 66, 71);
+    border: 1px solid rgb(92, 92, 100);
+    color: white;
+    line-height: 30px;
+    /* margin: 0px 15px 0px 15px; */
+}
+
 #item-dropdown:hover {
     cursor: pointer;
     background-color: rgb(106, 106, 112);
 }
 
+#level-dropdown:hover {
+    cursor: pointer;
+    background-color: rgb(106, 106, 112);
+}
+
 #item-dropdown:focus {
+    background-color: rgb(82, 82, 87);
+}
+
+#level-dropdown:focus {
     background-color: rgb(82, 82, 87);
 }
 
@@ -227,6 +242,11 @@ button:hover {
     margin-left: 3px;
     background-position: left !important;
     vertical-align: top;
+}
+
+.level-dropdown-arrow {
+    height: 30px;
+    margin-right: 0px;
 }
 
 #item-select p {
@@ -244,6 +264,17 @@ button:hover {
     z-index: 1;
 }
 
+#level-dropdown-content {
+    display: none;
+    width: 100%;
+    margin-left: -1px;
+    background-color: rgb(66, 66, 71);
+    border: 1px solid rgb(92, 92, 100);
+    position: absolute;
+    z-index: 1;
+    line-height: 20px;
+}
+
 #item-dropdown-content div div {
     display: inline-block;
     height: 25px;
@@ -259,7 +290,18 @@ button:hover {
     margin-left: 3px;
 }
 
+#level-dropdown-content div p {
+    display: inline-block;
+    line-height: 18px;
+    margin-left: 3px;
+}
+
 #item-dropdown-content div:hover {
+    cursor: pointer;
+    background-color: rgb(106, 106, 112);
+}
+
+#level-dropdown-content div:hover {
     cursor: pointer;
     background-color: rgb(106, 106, 112);
 }

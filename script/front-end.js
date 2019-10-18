@@ -36,6 +36,9 @@ $(document).ready(function(){
         if(target.closest("#item-dropdown").length == 0){
             $('#item-dropdown-content').hide();
         }
+        if(target.closest("#level-dropdown").length == 0){
+            $('#level-dropdown-content').hide();
+        }
     });
 
     //this function allows the user to open the dropdown menu to select the needed item
@@ -86,6 +89,30 @@ $(document).ready(function(){
 
             LoadItem();
         }
+    });
+
+    //this function allows the user to open the level dropdown menu
+    $("body").on("click", "#level-dropdown", function(){
+        if ($("#level-dropdown-content").is(":visible")){
+            $("#level-dropdown-content").hide();
+        }
+        else{
+            $("#level-dropdown-content").show();
+        }
+    });
+
+    //This function allows the user to change the level of the item in the dropdown
+    $("body").on("click", "#level-dropdown-content div", function(){
+        $('#level-dropdown-content').hide();
+        var level = $(this).attr("value");
+        $("#level-dropdown").attr("value", function() {return level;});
+        $("#level-dropdown p").text(level);
+
+        $("#item-select").focus();
+
+        ItemBuild.Items[ItemBuild.SelectedItemType].ItemLevel = level;
+
+        LoadItem();
     });
 
     //This function allows the user to select a rune by clicking it once to see it's potential values
