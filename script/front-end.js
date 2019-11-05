@@ -103,16 +103,38 @@ $(document).ready(function(){
 
     //This function allows the user to change the level of the item in the dropdown
     $("body").on("click", "#level-dropdown-content div", function(){
-        $('#level-dropdown-content').hide();
+        //$('#level-dropdown-content').hide();
         var level = $(this).attr("value");
         $("#level-dropdown").attr("value", function() {return level;});
-        $("#level-dropdown p").text(level);
+        $("#level-dropdown > p").text(level);
 
-        $("#item-select").focus();
+        $("#level-dropdown").focus();
 
-        ItemBuild.Items[ItemBuild.SelectedItemType].ItemLevel = level;
+        ItemBuild.Items.find(function(item) {return item.ItemType == ItemBuild.SelectedItemType}).ItemLevel = level;
 
         LoadItem();
+    });
+
+    //This function allows the user to quickly change the selected item by pressing up and down on their keyboard
+    $("body").on("keydown", "#level-dropdown", function(e){
+        if (e.keyCode == 38 || e.keyCode == 40) {
+            $('#level-dropdown-content').hide();
+            var level = +$("#level-dropdown > p").text();
+            if (e.keyCode == 38){
+                if (level <= 20) { return; }
+                level -= 15;
+            }
+            if (e.keyCode == 40){
+                if (level >= 200) { return; }
+                level += 15;
+            }
+            $("#level-dropdown").attr("value", function() {return level;});
+            $("#level-dropdown > p").text(level);
+
+            ItemBuild.Items.find(function(item) {return item.ItemType == ItemBuild.SelectedItemType}).ItemLevel = level;
+
+            LoadItem();
+        }
     });
 
     //This function allows the user to select a rune by clicking it once to see it's potential values
