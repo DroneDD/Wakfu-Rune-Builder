@@ -337,7 +337,8 @@ function LoadItemEffectHandler() {
     var boost = IsEffectBoosted(effect, ItemBuild.SelectedItemType);
 
     var html;
-    html = "<span style='width:50%;display:inline-block;'>";
+    html  = "<div style='width:100%;'>1<input type='range' min=1 max=10 value=10 tabindex='-1'></input>10</div>";
+    html += "<span style='width:50%;display:inline-block;'>";
     html += "<table class='effect-level-list" + (boost ? " effect-boosted" : "") + "'>";
     html += "<tr style='font-style:normal;color:rgb(199, 199, 199);'><td>Niveau</td><td>Valeur</td></tr>";
     for (let i = 1; i <= 5; i++) {
@@ -361,7 +362,7 @@ function LoadItemEffectHandler() {
     html += "</table>";
     html += "</span>";
     html += "<div style='line-height:35px;font-size: 100%;'>" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost)
-    html += "<button id='btn-remove-rune'> Enlever la rune</button>"
+    html += "<button id='btn-remove-rune' tabindex='-1'> Enlever la rune</button>"
     html += "</div>"
     $('#available-effects').html(html);
 }
