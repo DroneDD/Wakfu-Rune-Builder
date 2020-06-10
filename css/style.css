@@ -33,7 +33,7 @@ main {
 
 footer {
     background-color: rgb(56, 56, 61);
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: -webkit-fill-available;
@@ -126,16 +126,15 @@ button:hover {
 }
 
 .title-bar {
-    /*background: url("../images/weapon icons banner.png") 10px no-repeat;*/
     height: 80px;
     line-height: 80px;
-    padding-left: 10px;
+    padding-left: 30px;
     font-size: 140%;
 }
 
 #main-body {
     position: relative;
-    height: 335px;
+    height: calc(100vh - 165px);
     padding-top: 20px;
     display: flex;
     flex-direction: column;
@@ -214,7 +213,6 @@ button:hover {
     border: 1px solid rgb(92, 92, 100);
     color: white;
     line-height: 30px;
-    /* margin: 0px 15px 0px 15px; */
 }
 
 #item-dropdown:hover {
@@ -244,6 +242,13 @@ button:hover {
     vertical-align: top;
 }
 
+#level-dropdown p {
+    display: inline-block;
+    margin-left: 3px;
+    background-position: left !important;
+    vertical-align: top;
+}
+
 .level-dropdown-arrow {
     height: 30px;
     margin-right: 0px;
@@ -266,8 +271,7 @@ button:hover {
 
 #level-dropdown-content {
     display: none;
-    width: 100%;
-    margin-left: -1px;
+    width: 65px;
     background-color: rgb(66, 66, 71);
     border: 1px solid rgb(92, 92, 100);
     position: absolute;
@@ -476,7 +480,8 @@ button:hover {
 
 #tab-selector {
     border-bottom: 1px solid rgb(77, 77, 77);
-    display: flex
+    display: flex;
+    margin-top: 10px;
 }
 
 #tab-selector div {
@@ -488,18 +493,18 @@ button:hover {
     margin-left: 10px;
     margin-right: 10px;
     font-size: 100%;
-    line-height: 20px;
+    line-height: 30px;
 }
 #tab-selector div:before {
     border-left: 10px solid transparent;
-    border-bottom: 20px solid rgb(55, 55, 59);
+    border-bottom: 30px solid rgb(55, 55, 59);
     float: left;
     margin-left: -10px;
     content: '';
 }
 #tab-selector div:after {
     border-right: 10px solid transparent;
-    border-bottom: 20px solid rgb(55, 55, 59);
+    border-bottom: 30px solid rgb(55, 55, 59);
     float: right;
     margin-right: -10px;
     content: '';
@@ -511,12 +516,12 @@ button:hover {
 }
 
 #tab-selector div:hover:before {
-    border-bottom: 20px solid rgb(66, 66, 71);
+    border-bottom: 30px solid rgb(66, 66, 71);
     cursor: pointer;
 }
 
 #tab-selector div:hover:after {
-    border-bottom: 20px solid rgb(66, 66, 71);
+    border-bottom: 30px solid rgb(66, 66, 71);
     cursor: pointer;
 }
 
@@ -526,11 +531,11 @@ button:hover {
 }
 
 .tab-selected:before {
-    border-bottom: 20px solid rgb(86, 86, 92) !important;
+    border-bottom: 30px solid rgb(86, 86, 92) !important;
 }
 
 .tab-selected:after {
-    border-bottom: 20px solid rgb(86, 86, 92) !important;
+    border-bottom: 30px solid rgb(86, 86, 92) !important;
 }
 
 /*************************************************************/

@@ -38,7 +38,7 @@ function LoadBaseBuild(callback) {
         });
         for (var i2 = 0; i2 < ItemBuild.Items[i].Slots; i2++) {
             ItemBuild.Items[i].Runes.push({
-                RuneType: 1,
+                RuneType: 4,
                 RuneEffectID: 0, //RuneEffectID == 0 means nothing selected
                 RuneLevel: 0 //RuneLevel == 0 means nothing selected
             });
