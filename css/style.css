@@ -121,8 +121,11 @@ button:hover {
 }
 
 #btn-remove-rune {
-    width: 110px;
-    float: right;
+    width: 170px;
+    height: 50px;
+    display: block;
+    margin: auto;
+    font-size: 100%;
 }
 
 .title-bar {
@@ -271,7 +274,8 @@ button:hover {
 
 #level-dropdown-content {
     display: none;
-    width: 65px;
+    margin-left: -1px;
+    width: 100%;
     background-color: rgb(66, 66, 71);
     border: 1px solid rgb(92, 92, 100);
     position: absolute;
@@ -538,7 +542,7 @@ button:hover {
     border-bottom: 30px solid rgb(86, 86, 92) !important;
 }
 
-/*************************************************************/
+/********************************TABLE CSS*****************************/
 
 #effect-list {
     border-collapse: collapse;
@@ -558,6 +562,14 @@ button:hover {
     background-color: rgba(202, 202, 202, 0.25);
     color: white;
     cursor: pointer;
+}
+
+.effect-line:nth-child(even) {
+    background-color: rgba(202, 202, 202, 0.05);
+}
+
+.effect-line:nth-child(even):hover {
+    background-color: rgba(202, 202, 202, 0.25);
 }
 
 .effect-level-list {
@@ -580,9 +592,21 @@ button:hover {
     cursor: pointer;
 }
 
+.effect-level:nth-child(even) {
+    background-color: rgba(202, 202, 202, 0.05);
+}
+
+.effect-level:nth-child(even):hover {
+    background-color: rgba(202, 202, 202, 0.25);
+}
+
 .effect-level-selected {
-    background-color: rgba(134, 134, 134, 0.25);
+    background-color: rgba(202, 202, 202, 0.35);
     color: white;
+}
+
+.effect-level-selected:nth-child(even) {
+    background-color: rgba(202, 202, 202, 0.35);
 }
 
 #sublimation-list {
@@ -611,9 +635,21 @@ button:hover {
     cursor: pointer;
 }
 
+.sublimation-line:nth-child(even) {
+    background-color: rgba(202, 202, 202, 0.05);
+}
+
+.sublimation-line:nth-child(even):hover {
+    background-color: rgba(202, 202, 202, 0.25);
+}
+
 .sublimation-selected {
-    background-color: rgba(134, 134, 134, 0.25);
+    background-color: rgba(202, 202, 202, 0.35);
     color: white;
+}
+
+.sublimation-selected:nth-child(even) {
+    background-color: rgba(202, 202, 202, 0.35);
 }
 
 .image-td div{

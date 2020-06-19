@@ -103,7 +103,7 @@ $(document).ready(function(){
 
     //This function allows the user to change the level of the item in the dropdown
     $("body").on("click", "#level-dropdown-content div", function(){
-        //$('#level-dropdown-content').hide();
+        $('#level-dropdown-content').hide();
         var level = $(this).attr("value");
         $("#level-select").attr("value", function() {return level;});
         $("#level-select p").text(level);
@@ -119,7 +119,7 @@ $(document).ready(function(){
     $("body").on("keydown", "#level-dropdown", function(e){
         if (e.keyCode == 38 || e.keyCode == 40) {
             $('#level-dropdown-content').hide();
-            var level = +$("#level-dropdown > p").text();
+            var level = +$("#level-select > p").text();
             if (e.keyCode == 38){
                 if (level <= 20) { return; }
                 level -= 15;
@@ -337,8 +337,7 @@ function LoadItemEffectHandler() {
     var boost = IsEffectBoosted(effect, ItemBuild.SelectedItemType);
 
     var html;
-    html  = "<div style='width:100%;'>1<input type='range' min=1 max=10 value=10 tabindex='-1'></input>10</div>";
-    html += "<span style='width:50%;display:inline-block;'>";
+    html = "<span style='width:50%;display:inline-block;'>";
     html += "<table class='effect-level-list" + (boost ? " effect-boosted" : "") + "'>";
     html += "<tr style='font-style:normal;color:rgb(199, 199, 199);'><td>Niveau</td><td>Valeur</td></tr>";
     for (let i = 1; i <= 5; i++) {
@@ -361,7 +360,7 @@ function LoadItemEffectHandler() {
     }
     html += "</table>";
     html += "</span>";
-    html += "<div style='line-height:35px;font-size: 100%;'>" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost)
+    html += "<div style='line-height:35px;font-size: 120%;text-align: center;'>" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost)
     html += "<button id='btn-remove-rune' tabindex='-1'> Enlever la rune</button>"
     html += "</div>"
     $('#available-effects').html(html);
@@ -377,7 +376,7 @@ function LoadItem() {
     $("#item-select div").addClass(GetBoostImages(ItemBuild.SelectedItemType));
     $("#item-select p").text(GetItemTypeName(ItemBuild.SelectedItemType));
     
-    $("#level-select p").text(ItemBuild.Items[ItemBuild.SelectedItemType].ItemLevel);
+    $("#level-select p").text(item.ItemLevel);
 
     $("#item-selection button").removeClass("btn-selected");
     if (slots == 1) {
