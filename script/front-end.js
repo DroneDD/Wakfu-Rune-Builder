@@ -56,8 +56,8 @@ $(document).ready(function(){
         $('#item-dropdown-content').hide();
         var itemType = $(this).attr("value");
         $("#item-select").attr("value", function() {return itemType;});
-        $("#item-select div").removeClass();
-        $("#item-select div").addClass(GetBoostImages(itemType));
+        $("#selected-icon").removeClass();
+        $("#selected-icon").addClass(GetBoostImages(itemType));
         $("#item-select p").text(GetItemTypeName(itemType));
 
         $("#item-select").focus();
@@ -81,8 +81,8 @@ $(document).ready(function(){
                 itemType *= 2;
             }
             $("#item-select").attr("value", function() {return itemType;});
-            $("#item-select div").removeClass();
-            $("#item-select div").addClass(GetBoostImages(itemType));
+            $("#selected-icon").removeClass();
+            $("#selected-icon").addClass(GetBoostImages(itemType));
             $("#item-select p").text(GetItemTypeName(itemType));
 
             ItemBuild.SelectedItemType = itemType;
@@ -372,8 +372,8 @@ function LoadItem() {
     var slots = item.Slots;
 
     $("#item-select").attr("value", function() {return ItemBuild.SelectedItemType;});
-    $("#item-select div").removeClass();
-    $("#item-select div").addClass(GetBoostImages(ItemBuild.SelectedItemType));
+    $("#selected-icon").removeClass();
+    $("#selected-icon").addClass(GetBoostImages(ItemBuild.SelectedItemType));
     $("#item-select p").text(GetItemTypeName(ItemBuild.SelectedItemType));
     
     $("#level-select p").text(item.ItemLevel);

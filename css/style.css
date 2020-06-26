@@ -169,10 +169,11 @@ button:hover {
     right: 0;
 }
 
-#dropdown-arrow {
+.dropdown-arrow {
     background: url('../images/drop.png') no-repeat center;
     float: right;
     width: 18px !important;
+    height: 30px;
     margin-right: 4px;
 }
 
@@ -252,13 +253,8 @@ button:hover {
     vertical-align: top;
 }
 
-.level-dropdown-arrow {
-    height: 30px;
-    margin-right: 0px;
-}
-
 #item-select p {
-    margin-left: 3px;
+    margin-left: -3px;
     line-height: 30px;
 }
 
