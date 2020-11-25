@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "fs-extra": "^8.1.0",
-    "jquery": "^3.5.0"
+    "jquery": "^3.5.1"
   },
   "bugs": {
     "url": "https://github.com/electron/electron-quick-start/issues"
