@@ -17,7 +17,7 @@ $(document).ready(function(){
             }
             else{
                 item.Runes.push({
-                    RuneType: 1,
+                    RuneType: 4,
                     RuneEffectID: 0,
                     RuneLevel: 0
                 });
@@ -56,8 +56,8 @@ $(document).ready(function(){
         $('#item-dropdown-content').hide();
         var itemType = $(this).attr("value");
         $("#item-select").attr("value", function() {return itemType;});
-        $("#item-select div").removeClass();
-        $("#item-select div").addClass(GetBoostImages(itemType));
+        $("#selected-icon").removeClass();
+        $("#selected-icon").addClass(GetBoostImages(itemType));
         $("#item-select p").text(GetItemTypeName(itemType));
 
         $("#item-select").focus();
@@ -81,8 +81,8 @@ $(document).ready(function(){
                 itemType *= 2;
             }
             $("#item-select").attr("value", function() {return itemType;});
-            $("#item-select div").removeClass();
-            $("#item-select div").addClass(GetBoostImages(itemType));
+            $("#selected-icon").removeClass();
+            $("#selected-icon").addClass(GetBoostImages(itemType));
             $("#item-select p").text(GetItemTypeName(itemType));
 
             ItemBuild.SelectedItemType = itemType;
@@ -92,7 +92,7 @@ $(document).ready(function(){
     });
 
     //this function allows the user to open the level dropdown menu
-    $("body").on("click", "#level-dropdown", function(){
+    $("body").on("click", "#level-select", function(){
         if ($("#level-dropdown-content").is(":visible")){
             $("#level-dropdown-content").hide();
         }
@@ -105,14 +105,36 @@ $(document).ready(function(){
     $("body").on("click", "#level-dropdown-content div", function(){
         $('#level-dropdown-content').hide();
         var level = $(this).attr("value");
-        $("#level-dropdown").attr("value", function() {return level;});
-        $("#level-dropdown p").text(level);
+        $("#level-select").attr("value", function() {return level;});
+        $("#level-select p").text(level);
 
-        $("#item-select").focus();
+        $("#level-select").focus();
 
-        ItemBuild.Items[ItemBuild.SelectedItemType].ItemLevel = level;
+        ItemBuild.Items.find(function(item) {return item.ItemType == ItemBuild.SelectedItemType}).ItemLevel = level;
 
         LoadItem();
+    });
+
+    //This function allows the user to quickly change the selected item by pressing up and down on their keyboard
+    $("body").on("keydown", "#level-dropdown", function(e){
+        if (e.keyCode == 38 || e.keyCode == 40) {
+            $('#level-dropdown-content').hide();
+            var level = +$("#level-select > p").text();
+            if (e.keyCode == 38){
+                if (level <= 20) { return; }
+                level -= 15;
+            }
+            if (e.keyCode == 40){
+                if (level >= 200) { return; }
+                level += 15;
+            }
+            $("#level-dropdown").attr("value", function() {return level;});
+            $("#level-dropdown > p").text(level);
+
+            ItemBuild.Items.find(function(item) {return item.ItemType == ItemBuild.SelectedItemType}).ItemLevel = level;
+
+            LoadItem();
+        }
     });
 
     //This function allows the user to select a rune by clicking it once to see it's potential values
@@ -283,7 +305,7 @@ function BuildRuneSelectorHtml(number) {
 function LoadItemEffects(runeType, itemType) {
     var effects = GetEffectList(runeType, itemType);
     var html = "<table id='effect-list'>";
-    html += "<tr id='table-header'><td style='width:37px;'>Rune</td><td style='width:175px;'>Description</td><td style='width:55px;'>Valeurs</td><td>Boost</td></tr>";
+    html += "<tr id='table-header'><td style='width:60px;'>Rune</td><td style='width:205px;'>Description</td><td style='width:55px;'>Valeurs</td><td>Boost</td></tr>";
     $.each(effects, function(i, effect) {
         var boost = IsEffectBoosted(effect, ItemBuild.SelectedItemType);
         html += "<tr class='effect-line" + (boost ? " effect-boosted" : "") + "' value=" + effect.runeEffectID +">";
@@ -338,8 +360,8 @@ function LoadItemEffectHandler() {
     }
     html += "</table>";
     html += "</span>";
-    html += "<div style='line-height:35px;font-size: 100%;'>" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost)
-    html += "<button id='btn-remove-rune'> Enlever la rune</button>"
+    html += "<div style='line-height:35px;font-size: 120%;text-align: center;'>" + effect.description + ": " + GetEffectValue(effect, rune.RuneLevel, boost)
+    html += "<button id='btn-remove-rune' tabindex='-1'> Enlever la rune</button>"
     html += "</div>"
     $('#available-effects').html(html);
 }
@@ -350,9 +372,11 @@ function LoadItem() {
     var slots = item.Slots;
 
     $("#item-select").attr("value", function() {return ItemBuild.SelectedItemType;});
-    $("#item-select div").removeClass();
-    $("#item-select div").addClass(GetBoostImages(ItemBuild.SelectedItemType));
+    $("#selected-icon").removeClass();
+    $("#selected-icon").addClass(GetBoostImages(ItemBuild.SelectedItemType));
     $("#item-select p").text(GetItemTypeName(ItemBuild.SelectedItemType));
+    
+    $("#level-select p").text(item.ItemLevel);
 
     $("#item-selection button").removeClass("btn-selected");
     if (slots == 1) {
