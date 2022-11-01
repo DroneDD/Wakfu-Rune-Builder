@@ -27,7 +27,7 @@ $(document).ready(function(){
         BuildRuneSlots();
     });
 
-    //this function allows the user to hide the rune selection menu by clicking outside with the left or right click
+    //this function allows the user to hide the rune selection or other selection menu by clicking outside with the left or right click
     $(document).on("click contextmenu", function(event){ 
         target = $(event.target);
         if(!event.target.matches('.emplacement')) {
@@ -328,6 +328,7 @@ function LoadItemEffects(runeType, itemType) {
     html += "</table>";
 
     $('#available-effects').html(html);
+    $('#available-sublimations').html("");
 }
 
 function LoadItemEffectHandler() {
@@ -364,6 +365,7 @@ function LoadItemEffectHandler() {
     html += "<button id='btn-remove-rune' tabindex='-1'> Enlever la rune</button>"
     html += "</div>"
     $('#available-effects').html(html);
+    $('#available-sublimations').html("");
 }
 
 //This function populates and prefills the form with the current Build Item
@@ -426,7 +428,8 @@ function LoadSublimations() {
     });
     html += "</table>";
 
-    $('#available-effects').html(html);
+    $('#available-effects').html("");
+    $('#available-sublimations').html(html);
 }
 
 function LoadTotalRows(){

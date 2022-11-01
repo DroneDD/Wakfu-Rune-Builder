@@ -99,7 +99,7 @@ function GetItemTypeName(itemType){
 }
 
 function IsEffectBoosted(effect, itemType){
-    return (effect.bonus & +itemType) == +itemType;
+    return effect.bonus & itemType;
 }
 
 function GetBoostImages(itemType){
@@ -196,6 +196,7 @@ function LoadTotalEffects(){
     return totalEffects;
 }
 
+//Could make a "data file.json" to avoid hardcoded values, but as it is not a dynamic DB, this is not any different to hardcode it here than in the file - it could be a bit prettier I guess
 function GetSublimationList(item, sublimationID) {
     var sublimationList = [];
     sublimationList.push({runeType1: "1", runeType2: "1", runeType3: "1", sublimationID: 1, stack: 3, name: "Ruine", description: "+10% dommages indirects (dégâts occasionnés par le lanceur en dehors de son tour)"});
