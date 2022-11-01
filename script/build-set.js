@@ -49,7 +49,7 @@ function LoadBaseBuild(callback) {
 }
 
 function SaveBuild(){
-    let fs = require("fs-extra");
+    let fs = require("fs");
     let remote = require('electron').remote;
     let app = remote.app;
     let dialog = remote.dialog;
@@ -58,8 +58,9 @@ function SaveBuild(){
         defaultPath: app.getPath('userData') + "\\Builds\\DefaultBuild.wrb",
         filters: [{name: "Fichiers Wakfu-Rune-Builder", extensions: ["wrb"]}]
     };
-    fs.ensureDirSync(app.getPath('userData') + "\\Builds\\");
-    let path = dialog.showSaveDialog(options);
+    try {fs.mkdirSync(app.getPath('userData') + "\\Builds\\");}
+    catch{} //Empty catch - the directory already exists
+    let path = dialog.showSaveDialogSync(options);
     if (path){
         if (!path.toLowerCase().endsWith(".wrb")){
             path += ".wrb";
@@ -70,7 +71,8 @@ function SaveBuild(){
 }
 
 function LoadBuild(){
-    let fs = require("fs-extra");
+    let fs = require("fs");
+    
     let remote = require('electron').remote;
     let app = remote.app;
     let dialog = remote.dialog;
@@ -79,8 +81,9 @@ function LoadBuild(){
         defaultPath: app.getPath('userData') + "\\Builds\\DefaultBuild.wrb",
         filters: [{name: "Fichiers Wakfu-Rune-Builder", extensions: ["wrb"]}]
     };
-    fs.ensureDirSync(app.getPath('userData') + "\\Builds\\");
-    let path = dialog.showOpenDialog(options);
+    try {fs.mkdirSync(app.getPath('userData') + "\\Builds\\");}
+    catch{} //Empty catch - the directory already exists
+    let path = dialog.showOpenDialogSync(options);
     if (path && path[0]){
         ItemBuild = JSON.parse(fs.readFileSync(path[0]));
         LoadItem();
