@@ -328,7 +328,6 @@ function LoadItemEffects(runeType, itemType) {
     html += "</table>";
 
     $('#available-effects').html(html);
-    $('#available-sublimations').html("");
 }
 
 function LoadItemEffectHandler() {
@@ -365,7 +364,6 @@ function LoadItemEffectHandler() {
     html += "<button id='btn-remove-rune' tabindex='-1'> Enlever la rune</button>"
     html += "</div>"
     $('#available-effects').html(html);
-    $('#available-sublimations').html("");
 }
 
 //This function populates and prefills the form with the current Build Item
@@ -428,8 +426,7 @@ function LoadSublimations() {
     });
     html += "</table>";
 
-    $('#available-effects').html("");
-    $('#available-sublimations').html(html);
+    $('#available-effects').html(html);
 }
 
 function LoadTotalRows(){
